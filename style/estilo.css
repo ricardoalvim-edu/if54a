@@ -223,8 +223,10 @@
     background-image: url("../img/logo.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    position: fixed;
     padding: 8%;
-    margin: -1%;
+    margin-top: -3%;
+    padding-bottom: -3%;
     float: left;
   }
   .menuItem{
