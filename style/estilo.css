@@ -1,13 +1,29 @@
 /* Telas de média-altas */
+.logo{
+  display: block;
+  background-image: url("../img/logo.svg");
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  float: left;
+  width: 120px;
+  height: 25px;
+  margin-top: 1px;
+}
+.areaEspecializacao{
+  color: black;
+  text-align: center;
+  margin-top: 5%;
+}
 @media(min-width: 976px){
   .logo{
     display: block;
     background-image: url("../img/logo.svg");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    padding: 8%;
-    margin: -6%;
     float: left;
+    width: 120px;
+    height: 25px;
+    margin-top: 1px;
   }
   .menuItem{
     display: block;
@@ -23,8 +39,8 @@
   }
   .textViewMore{
     margin-top: 1%;
-    margin-left: 44%;
     font-size: 110%;
+    text-align: center;
   }
   .viewMoreLink{
     color: #3f98ff;
@@ -52,9 +68,10 @@
   }
   .textInfo{
     display: inline;
+    text-align: center;
   }
   .controlInfo{
-    margin-left: 39%;
+    text-align: center;
     margin-top: 5%;
   }
   .searcherCourses{
@@ -73,20 +90,30 @@
     margin-top: 0%;
     padding-top: 3.6%;
   }
+}
 
+.box{
+  width: 80%;
+}
+.elInicial{
+  width: 225px;
+  display: inline-block;
+  height: 125px;
+  background-color: blue;
+  margin-left: 10%;
+  margin-top: 1%;
+}
+.elProximo{
+  width: 225px;
+  height: 125px;
+  background-color: red;
+  display: inline-block;
+  margin-top: 1%;
+  margin-left: 1%;
 }
 
 /* telas de dispositivos móveis */
 @media(min-width: 780px) and (max-width: 976px){
-   .logo{
-    display: block;
-    background-image: url("../img/logo.svg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    padding: 8%;
-    margin: -6%;
-    float: left;
-  }
   .menuItem{
     display: block;
     float: right;
@@ -208,26 +235,15 @@
     transform: translate(100%, 0);
   }
   #control-nav:checked ~ .control-nav-close {
-  -webkit-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  transform: translate(0, 0);
-}
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
 
-#control-nav:checked ~ nav {
-  -webkit-transform: translate(0, 0);
-  -ms-transform: translate(0, 0);
-  transform: translate(0, 0);
-}
-   .logo{
-    display: block;
-    background-image: url("../img/logo.svg");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    position: fixed;
-    padding: 8%;
-    margin-top: -3%;
-    padding-bottom: -3%;
-    float: left;
+  #control-nav:checked ~ nav {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
   }
   .menuItem{
     display: list-item;
@@ -293,5 +309,4 @@
     margin-top: 0%;
     padding-top: 3.6%;
   }
-
 }
