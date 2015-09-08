@@ -1,4 +1,11 @@
 <!doctype HTML>
+<script language="javascript" type="text/javascript">
+function popitup(url) {
+	newwindow=window.open(url,'name',"resizable=0,height=390,width=780");
+	if (window.focus) {newwindow.focus()}
+	return false;
+}
+</script>
 <html>
   <head>
       <meta charset="utf-8"/>
@@ -15,7 +22,7 @@
     <label for="control-nav" class="control-nav-close"></label>
     <nav class="fR">
     <ul class="l2">
-      <a href="#" class="menuItem cadastrar">Cadastre-se</a>
+      <a href="cadastro.html" onclick="return popitup('cadastro.html')" class="menuItem cadastrar">Cadastre-se</a>
       <a href="#" class="menuItem">Entrar</a>
       <a href="#" class="menuItem">Instituições</a>
     </ul>
