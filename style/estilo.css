@@ -41,10 +41,7 @@ body{
 
 .searcherCourses{
   margin-left: 10%;
-  position: relative;
-  vertical-align: top;
   background-color: white;
-  padding-left: 1%;
   border: 4px solid rgba(10,10,10,0.6);
   width: 80%;
   height: 25px;
@@ -71,36 +68,39 @@ header {
   margin-bottom: 1px;
 }
 
+.textViewMore{
+    margin-top: 1%;
+    font-size: 110%;  
+    text-align: center;
+}
+
 .universityText{
   margin-top: 1px;
   margin-bottom: 1px;
 }
 
 .box{
-  margin-left: -8%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.elInicial{
-  width: 225px;
-  display: inline-block;
-  height: 150px;
-  margin-left: 10%;
-  margin-top: 1%;
-  text-align: justify;
-}
-
-.elProximo{
+.boxConteudo{
   width: 225px;
   height: 150px;
   display: inline-block;
-  margin-top: 1%;
   margin-left: 1%;
+  margin-top: 1%;
   text-align: justify;
 }
 
 .imgBox{
   width: 225px;
   height: 125px;
+}
+
+.controlInfo{
+  text-align: center;
+  margin-top: 5%;
 }
 
 .formCadastro {
@@ -175,12 +175,6 @@ button:active {
     color: white;
   }
   
-  .textViewMore{
-    margin-top: 1%;
-    font-size: 110%;
-    text-align: center;
-  }
-  
   .viewMoreLink{
     color: #3f98ff;
     text-decoration: none;
@@ -189,10 +183,6 @@ button:active {
   .textInfo{
     display: inline;
     text-align: center;
-  }
-  .controlInfo{
-    text-align: center;
-    margin-top: 5%;
   }
 }
 
@@ -221,12 +211,6 @@ button:active {
     color: white;
   }
   
-  .textViewMore{
-    margin-top: 1%;
-    margin-left: 42%;
-    font-size: 110%;
-  }
-  
   .viewMoreLink{
     color: #3f98ff;
     text-decoration: none;
@@ -234,10 +218,6 @@ button:active {
   
   .textInfo{
     display: inline;
-  }
-  .controlInfo{
-    margin-left: 34.5%;
-    margin-top: 5%;
   }
 }
 
@@ -319,12 +299,6 @@ button:active {
     color: white;
   }
   
-  .textViewMore{
-    margin-top: 1%;
-    margin-left: 27%;
-    font-size: 110%;
-  }
-  
   .viewMoreLink{
     color: #3f98ff;
     text-decoration: none;
@@ -332,14 +306,5 @@ button:active {
       
   .textInfo {
     display: inline;
-  }
-  
-  .controlInfo {
-    margin-left: 15%;
-    margin-top: 5%;
-  }
-  
-  .textSearch {
-    padding: 2%;
   }
 }
