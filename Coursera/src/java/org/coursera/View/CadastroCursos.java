@@ -8,12 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
-import org.coursera.Model.Usuario;
 
-/**
- *
- * @autor ricar
- */
 @WebServlet(name = "CadastroCursos", urlPatterns = {"/CadastroCursos"})
 public class CadastroCursos extends HttpServlet{
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -48,5 +43,5 @@ public class CadastroCursos extends HttpServlet{
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 }

@@ -37,7 +37,7 @@ public class ControllerUsuario {
             session = sf.openSession();
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.createQuery("from Usuario where id='"+usr.getIdUsuario()+"'");
+            Query query = session.getNamedQuery("Usuario.usuariobyId");
             Usuario u = (Usuario)query.uniqueResult();
             if(u!=null) resultado = true;
         } catch (Exception e) {

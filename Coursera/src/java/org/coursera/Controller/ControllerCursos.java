@@ -7,10 +7,6 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-/**
- *
- * @autor ricar
- */
 public class ControllerCursos {
 
     public static boolean salvar(Curso curso){
@@ -34,13 +30,12 @@ public class ControllerCursos {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         List<Curso> cursos = null;
-        
-        try{
+        try {
             s.getTransaction().begin();
             Query query = s.getNamedQuery("Curso.todos");
             cursos = query.list();
             s.getTransaction().commit();
-        }catch (Exception ex){
+        } catch (Exception ex){
             System.out.println("Exception: "+ ex.getMessage());
         }
         finally{
