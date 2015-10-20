@@ -1,0 +1,33 @@
+<!doctype HTML>
+<html>
+  <head>
+     <meta charset="utf-8"/>
+     <title>Cadastro - Coursera</title>
+     <link rel="stylesheet" href="style/estilo.css"/>
+     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1"/>
+     <link rel="icon" type="image/png" href="img/icon.png">
+   </head>
+   <body>
+    <h1 class="logo logoCadastro"></h1>
+    <p class="textCadastro">Acesso global à melhor educação do mundo!</p>
+    <div class="formCadastro">
+      <form action="./CadastroCursos" method="post" accept-charset="utf-8">
+        <br>
+            <input type="text" placeholder="Nome do curso" name="nome" />
+        <br>
+            <input type="text" placeholder="Descrição" name="desc" />
+        <br>
+            <span>Imagem: </span>
+            <!-- <input type="file" name="urlImage" accept="image/*"/> -->
+            <input type="text" placeholder="Imagem" name="urlImage"/>
+        <br>
+        <br>
+            <span>Universidade: </span>
+            <input type="text" placeholder="Universidade" name="uni" />
+        <br>
+            <button type="submit">Salvar</button>
+      </form>
+     </div>
+   </body>
+</html>

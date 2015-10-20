@@ -1,9 +1,6 @@
 package org.coursera.Model;
 
-import java.sql.Connection;
-import java.util.ArrayList;
-import java.util.List;
-import org.coursera.Model.Usuario;
+
 import org.coursera.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
