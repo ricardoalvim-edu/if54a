@@ -8,15 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.coursera.Controller.CursosController;
+import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
 
-/**
- *
- * @autor ricar
- */
-@WebServlet(name = "TodosCursos", urlPatterns = {"/index"})
-public class TodosCursos extends HttpServlet{
+@WebServlet(name = "Index", urlPatterns = {"/index"})
+public class Index extends HttpServlet{
     private String head = "<!doctype HTML>\n" +
 "<script language=\"javascript\" type=\"text/javascript\">\n" +
 "function popitup(url) {\n" +
@@ -60,10 +56,14 @@ public class TodosCursos extends HttpServlet{
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
+        int tamanhoCursos = 0;
         PrintWriter pw = response.getWriter();
-        List<Curso> cursos = CursosController.cursos();
+        List<Curso> cursos = ControllerCursos.cursos();
         pw.println(head);
         pw.println(header);
+        if (cursos != null && cursos.size() > 0) {
+            tamanhoCursos = cursos.size();
+        }
         String bodyP1 = "<body>\n" +
 "    <div class=\"searchCourses\">\n" +
 "      <p class=\"textSearch\">Faça os melhores cursos online!</p>\n" +
@@ -75,7 +75,7 @@ public class TodosCursos extends HttpServlet{
 "      <div class=\"controlInfo\">\n" +
 "        <ul>\n" +
 "          <li class=\"textInfo\"><b>14.969.909</b> Alunos</li>\n" +
-"          <li class=\"textInfo\">· <b>" + cursos.size() +"</b> Cursos </li>\n" +
+"          <li class=\"textInfo\">· <b>" + tamanhoCursos +"</b> Cursos </li>\n" +
 "        </ul>\n" +
 "      </div>\n" +
 "    </div>";
@@ -84,7 +84,7 @@ public class TodosCursos extends HttpServlet{
         pw.println("<h1>Novas especializações</h1>");
         pw.println("<div class='box'>");
         
-        if (cursos.size() > 0){
+        if (tamanhoCursos != 0){
             for (Curso c : cursos){
                 pw.println("<div class='boxConteudo'>");
                     pw.println("<div class='imgBox' style=\"background-image: url('"+ c.getUrlImagem()+"') \"> </div>");

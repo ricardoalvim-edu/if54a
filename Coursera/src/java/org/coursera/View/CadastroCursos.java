@@ -1,4 +1,4 @@
-package org.coursera.Controller;
+package org.coursera.View;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -6,8 +6,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
-import org.coursera.Model.RegistrarUsuario;
 import org.coursera.Model.Usuario;
 
 /**
@@ -26,7 +26,7 @@ public class CadastroCursos extends HttpServlet{
         String youtube = request.getParameter("youtube");
         
         Curso curso = new Curso (nome, description, url, universidade, youtube);
-        boolean resultado = CursosController.salvar(curso);
+        boolean resultado = ControllerCursos.salvar(curso);
         if (resultado) {
             response.sendRedirect("cadastro-sucesso.html");
         } else {

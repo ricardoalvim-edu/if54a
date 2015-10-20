@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.coursera.Controller.CursosController;
+import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
 
 /**
@@ -62,7 +62,7 @@ public class VerCurso extends HttpServlet{
         PrintWriter pw = response.getWriter();
         String id = request.getParameter("id");
         
-        Curso c = CursosController.cursoPorId(id);
+        Curso c = ControllerCursos.cursoPorId(id);
         String title = "<h1 class='courseName' >"+c.getNome()+"</h1>";
         String university = "<h2 class='courseUni'>"+c.getUni()+"</h2>";
         String desc = "<p class='descCourse'>" + c.getDescricao() + "</h2>";

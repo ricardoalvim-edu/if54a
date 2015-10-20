@@ -11,7 +11,7 @@ import org.hibernate.SessionFactory;
  *
  * @autor ricar
  */
-public class CursosController {
+public class ControllerCursos {
 
     public static boolean salvar(Curso curso){
         SessionFactory sf = HibernateUtil.getSessionFactory();

@@ -1,13 +1,13 @@
-package org.coursera.Model;
+package org.coursera.Controller;
 
-
+import org.coursera.Model.Usuario;
 import org.coursera.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-public class RegistrarUsuario {
+public class ControllerUsuario {
     
     public boolean registrar (Usuario usr) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
