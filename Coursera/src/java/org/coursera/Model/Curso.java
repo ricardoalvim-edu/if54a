@@ -6,9 +6,10 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 
-@NamedQueries(
-    @NamedQuery(name="Curso.todos", query = "SELECT c FROM Curso c")
-)
+@NamedQueries({
+    @NamedQuery(name="Curso.todos", query = "SELECT c FROM Curso c"),
+    @NamedQuery(name="Curso.cursoById", query = "SELECT c FROM Curso c WHERE c.idCursos = :idCurso")
+})
 @Entity (name = "Curso")
 public class Curso {
     @Id @GeneratedValue
@@ -17,12 +18,14 @@ public class Curso {
     private String descricao;
     private String urlImagem;
     private String uni;
+    private String youtubeLink;
     
-    public Curso(String nome, String descricao, String urlImagem, String uni){
+    public Curso(String nome, String descricao, String urlImagem, String uni, String youtubeLink){
         this.nome = nome;
         this.descricao = descricao;
         this.urlImagem = urlImagem;
         this.uni = uni;
+        this.youtubeLink = youtubeLink;
     }
 
     public Curso(){
@@ -64,6 +67,14 @@ public class Curso {
 
     public void setUni(String uni) {
         this.uni = uni;
+    }
+
+    public String getYoutubeLink() {
+        return youtubeLink;
+    }
+
+    public void setYoutubeLink(String youtubeLink) {
+        this.youtubeLink = youtubeLink;
     }
     
     

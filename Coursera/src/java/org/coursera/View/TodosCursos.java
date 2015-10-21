@@ -15,7 +15,7 @@ import org.coursera.Model.Curso;
  *
  * @autor ricar
  */
-@WebServlet(name = "TodosCursos", urlPatterns = {"/TodosCursos"})
+@WebServlet(name = "TodosCursos", urlPatterns = {"/index"})
 public class TodosCursos extends HttpServlet{
     private String head = "<!doctype HTML>\n" +
 "<script language=\"javascript\" type=\"text/javascript\">\n" +
@@ -50,23 +50,6 @@ public class TodosCursos extends HttpServlet{
 "  </nav>\n" +
 "  </header>";
     
-    private String bodyP1 = "<body>\n" +
-"    <div class=\"searchCourses\">\n" +
-"      <p class=\"textSearch\">Faça os melhores cursos online!</p>\n" +
-"      <input type=\"text\" placeholder=\"O que você gostaria de aprender?\" class=\"searcherCourses\"/>\n" +
-"      <br>\n" +
-"      <div class=\"textViewMore\">\n" +
-"        <span>ou <a href=\"#\" class=\"viewMoreLink\">ver lista de cursos.</a></span>\n" +
-"      </div>\n" +
-"      <div class=\"controlInfo\">\n" +
-"        <ul>\n" +
-"          <li class=\"textInfo\"><b>14.969.909</b> Alunos</li>\n" +
-"          <li class=\"textInfo\">· <b>1.298</b> Cursos ·</li>\n" +
-"          <li class=\"textInfo\"><b>122</b> Parceiros</li>\n" +
-"        </ul>\n" +
-"      </div>\n" +
-"    </div>";
-    
     private String bodyP2 = "</div>\n" +
 "  </body>\n" +
 "  <footer>\n" +
@@ -81,17 +64,38 @@ public class TodosCursos extends HttpServlet{
         List<Curso> cursos = CursosController.cursos();
         pw.println(head);
         pw.println(header);
+        String bodyP1 = "<body>\n" +
+"    <div class=\"searchCourses\">\n" +
+"      <p class=\"textSearch\">Faça os melhores cursos online!</p>\n" +
+"      <input type=\"text\" placeholder=\"O que você gostaria de aprender?\" class=\"searcherCourses\"/>\n" +
+"      <br>\n" +
+"      <div class=\"textViewMore\">\n" +
+"        <span>ou <a href=\"#\" class=\"viewMoreLink\">ver lista de cursos.</a></span>\n" +
+"      </div>\n" +
+"      <div class=\"controlInfo\">\n" +
+"        <ul>\n" +
+"          <li class=\"textInfo\"><b>14.969.909</b> Alunos</li>\n" +
+"          <li class=\"textInfo\">· <b>" + cursos.size() +"</b> Cursos </li>\n" +
+"        </ul>\n" +
+"      </div>\n" +
+"    </div>";
         pw.println(bodyP1);
         pw.println("<div class='areaEspecializacao'>");
         pw.println("<h1>Novas especializações</h1>");
         pw.println("<div class='box'>");
-        for (Curso c : cursos){
-            pw.println("<div class='boxConteudo'>");
-                pw.println("<div class='imgBox' style=\"background-image: url('"+ c.getUrlImagem()+"') \"> </div>");
-                pw.println("<p class=\"titleCourse\">"+ c.getNome() +"</p>");
-                pw.println("<p class='universityText'>"+ c.getUni() + "</p>");
-            pw.println("</div>");
-        } 
+        
+        if (cursos.size() > 0){
+            for (Curso c : cursos){
+                pw.println("<div class='boxConteudo'>");
+                    pw.println("<div class='imgBox' style=\"background-image: url('"+ c.getUrlImagem()+"') \"> </div>");
+                    pw.println("<a href=VerCurso?id=" +c.getIdCursos() +" class=\"titleCourse\">"+ c.getNome() +"</a>");
+                    pw.println("<p class='universityText'>"+ c.getUni() + "</p>");
+                pw.println("</div>");
+            } 
+        }else{
+            pw.println("<h2 style='text-align: center'>Não há vídeos ainda :(</h2>");
+        }
+        
         pw.println("</div>");
         pw.println("</div>");
         pw.println(bodyP2);

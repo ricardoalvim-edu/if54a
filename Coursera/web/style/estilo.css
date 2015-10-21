@@ -10,7 +10,15 @@
   height: 26px;
   margin-top: 8px;
 }
-
+.courseName{
+    margin-left: 10%;
+}
+.courseUni{
+    margin-left: 10%;
+}
+.descCourse{
+    margin-left: 10%;
+}
 .logoCadastro{
   float: none;
   width: 214px;
@@ -66,6 +74,7 @@ header {
 .titleCourse{
   margin-top: 8px;
   margin-bottom: 1px;
+  text-decoration: none;
 }
 
 .textViewMore{
@@ -219,6 +228,7 @@ button:active {
   .textInfo{
     display: inline;
   }
+  
 }
 
 /* Telas de dispositivos móveis */

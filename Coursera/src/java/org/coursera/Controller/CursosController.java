@@ -39,7 +39,6 @@ public class CursosController {
             s.getTransaction().begin();
             Query query = s.getNamedQuery("Curso.todos");
             cursos = query.list();
-            System.out.println("Numero cursos: " + cursos.size());
             s.getTransaction().commit();
         }catch (Exception ex){
             System.out.println("Exception: "+ ex.getMessage());
@@ -48,5 +47,25 @@ public class CursosController {
             s.close();
         }
         return cursos;
+    } 
+    
+     public static Curso cursoPorId(String id){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        Curso curso = new Curso();
+        
+        try{
+            s.getTransaction().begin();
+            Query query = s.getNamedQuery("Curso.cursoById");
+            query.setParameter("idCurso", Integer.parseInt(id));
+            curso = (Curso) query.uniqueResult();
+            s.getTransaction().commit();
+        }catch (Exception ex){
+            System.out.println("Exception: "+ ex.getMessage());
+        }
+        finally{
+            s.close();
+        }
+        return curso;
     } 
 }
