@@ -50,27 +50,27 @@ public class ControllerUsuario {
         return resultado;
     }
     
-    public static String getSenha(String mail, String senha) {
+    public static Usuario getSenha(String mail, String senha) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = null;
         Transaction tx = null;
+        Usuario user = new Usuario();
         try {
             session = sf.openSession();
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.getNamedQuery("Usuario.todos");
-            ArrayList<Usuario> usuarios = (ArrayList<Usuario>) query.list();
-            for (Usuario u : usuarios) {
-                if (mail.equals(u.getEmail()) || senha.equals(u.getSenha())) {
-                    return "foi";  
-                }
-            }
+            Query query = session.getNamedQuery("Usuario.userLogin");
+            query.setParameter("mail", mail);
+            query.setParameter("senha", senha);
+            user = (Usuario) query.uniqueResult();
+            tx.commit();
         } catch (Exception e) {
             if (tx != null) tx.rollback();
         } finally {
             session.close();
+            
         }
-        return "n foi";
+        return user;
     }
     
 }

@@ -9,7 +9,8 @@ import javax.persistence.NamedQuery;
 
 @NamedQueries({
     @NamedQuery(name="Usuario.todos", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name="Usuario.usuarioById", query = "SELECT u FROM Usuario u WHERE u.id = :id")
+    @NamedQuery(name="Usuario.usuarioById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
+    @NamedQuery(name="Usuario.userLogin", query = "SELECT u.email, u.senha FROM Usuario u WHERE u.email = :mail AND u.senha = :senha")
 })
 @Entity
 public class Usuario {
@@ -41,6 +42,13 @@ public class Usuario {
         this.senha = senha;
         this.email = email;
         this.tipo_usr = tipo_usr;
+    }
+    
+    public Usuario() {
+        this.usuario = null;
+        this.senha = null;
+        this.email = null;
+        this.tipo_usr = null;
     }
 
     public Long getIdUsuario() {

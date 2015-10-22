@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.coursera.Controller.ControllerUsuario;
+import org.coursera.Model.Usuario;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class Login extends HttpServlet {
@@ -18,16 +19,13 @@ public class Login extends HttpServlet {
         PrintWriter out = response.getWriter();
         String mail = request.getParameter("mail");
         String senha = request.getParameter("senha");
-        String ue = ControllerUsuario.getSenha(mail, senha);
-       // if (ControllerUsuario.getSenha(mail, senha) != null){
-         //  out.println("batatinha");
-            // HttpSession session = request.getSession();  
-           // session.setAttribute("mail",mail);
-           // response.sendRedirect("Index");
-        //} else {
-            out.println(ue);
-            out.println(mail + " - " + senha);
-       // }
+        
+        Usuario user = ControllerUsuario.getSenha(mail, senha);
+        if (user != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("mail", mail);
+            response.sendRedirect("index");
+        } 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
