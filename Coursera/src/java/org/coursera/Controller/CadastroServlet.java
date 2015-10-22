@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.coursera.Model.Usuario;
 import org.coursera.Model.RegistrarUsuario;
 
@@ -23,6 +24,8 @@ public class CadastroServlet extends HttpServlet {
         Usuario usuario = new Usuario(usr, senha, mail);
         RegistrarUsuario ru = new RegistrarUsuario();
         boolean resultado = ru.registrar(usuario);
+        HttpSession session = request.getSession();
+        session.setAttribute("user", usr);
         if (resultado) {
             response.sendRedirect("cadastro-sucesso.html");
         } else {

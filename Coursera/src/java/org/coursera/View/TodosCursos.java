@@ -35,21 +35,6 @@ public class TodosCursos extends HttpServlet{
 "    <link rel=\"icon\" type=\"image/png\" href=\"img/icon.png\">\n" +
 "  </head>";
     
-    private String header = "<header>\n" +
-"    <h1 class=\"logo\">\n" +
-"    </h1>\n" +
-"    <input type=\"checkbox\" id=\"control-nav\" style=\"display: none;\"/>\n" +
-"    <label for=\"control-nav\" class=\"control-nav\"></label>\n" +
-"    <label for=\"control-nav\" class=\"control-nav-close\"></label>\n" +
-"    <nav class=\"fR\">\n" +
-"    <ul class=\"l2\">\n" +
-"      <a href=\"cadastro.html\" onclick=\"return popitup('cadastro.html')\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
-"      <a href=\"login.html\" onclick=\"return popitup('login.html')\" class=\"menuItem\">Entrar</a>\n" +
-"      <a href=\"#\" class=\"menuItem\">Instituições</a>\n" +
-"    </ul>\n" +
-"  </nav>\n" +
-"  </header>";
-    
     private String bodyP2 = "</div>\n" +
 "  </body>\n" +
 "  <footer>\n" +
@@ -57,12 +42,32 @@ public class TodosCursos extends HttpServlet{
 "  </footer>\n" +
 "</html>\n" +
 "";
+    String user = "";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
         List<Curso> cursos = CursosController.cursos();
         pw.println(head);
+        user = (String) request.getSession().getAttribute("user");
+
+        String logado = "<span class='menuItem'>Olá " +user + "</span>";
+        if (logado.equals("null")){
+            logado = "<a href=\"cadastro.html\" onclick=\"return popitup('cadastro.html')\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
+"      <a href=\"login.html\" onclick=\"return popitup('login.html')\" class=\"menuItem\">Entrar</a>\n" +
+"      <a href=\"#\" class=\"menuItem\">Instituições</a>\n";
+        }
+        String header = "<header>\n" +
+"    <h1 class=\"logo\">\n" +
+"    </h1>\n" +
+"    <input type=\"checkbox\" id=\"control-nav\" style=\"display: none;\"/>\n" +
+"    <label for=\"control-nav\" class=\"control-nav\"></label>\n" +
+"    <label for=\"control-nav\" class=\"control-nav-close\"></label>\n" +
+"    <nav class=\"fR\">\n" +
+"    <ul class=\"l2\">\n" + logado +                   
+"    </ul>\n" +
+"  </nav>\n" +
+"  </header>";
         pw.println(header);
         String bodyP1 = "<body>\n" +
 "    <div class=\"searchCourses\">\n" +
@@ -104,6 +109,7 @@ public class TodosCursos extends HttpServlet{
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
     }
 
     @Override
