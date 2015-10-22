@@ -8,7 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+<<<<<<< HEAD:Coursera/src/java/org/coursera/View/CadastroUsuario.java
 import org.coursera.Controller.ControllerUsuario;
+=======
+import javax.servlet.http.HttpSession;
+>>>>>>> 2c60eb41eefb1e4597215a7f03d1d5bf3a417d5f:Coursera/src/java/org/coursera/Controller/CadastroServlet.java
 import org.coursera.Model.Usuario;
 
 @WebServlet(name = "CadastroServlet", urlPatterns = {"/CadastroServlet"})
@@ -23,6 +27,8 @@ public class CadastroUsuario extends HttpServlet {
         Usuario usuario = new Usuario(usr, senha, mail);
         ControllerUsuario ru = new ControllerUsuario();
         boolean resultado = ru.registrar(usuario);
+        HttpSession session = request.getSession();
+        session.setAttribute("user", usr);
         if (resultado) {
             response.sendRedirect("cadastro-sucesso.html");
         } else {
