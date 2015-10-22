@@ -51,11 +51,14 @@ public class TodosCursos extends HttpServlet{
         pw.println(head);
         user = (String) request.getSession().getAttribute("user");
 
-        String logado = "<span class='menuItem'>Olá " +user + "</span>";
-        if (logado.equals("null")){
+        String logado = "";
+                
+        if (user == null){
             logado = "<a href=\"cadastro.html\" onclick=\"return popitup('cadastro.html')\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
 "      <a href=\"login.html\" onclick=\"return popitup('login.html')\" class=\"menuItem\">Entrar</a>\n" +
-"      <a href=\"#\" class=\"menuItem\">Instituições</a>\n";
+"      <a href=\"#\" class=\"menuItem\">Instituições</a>\n";;         
+        }else{
+            logado = "<span class='menuItem'>Olá " +user + "</span>";   
         }
         String header = "<header>\n" +
 "    <h1 class=\"logo\">\n" +
