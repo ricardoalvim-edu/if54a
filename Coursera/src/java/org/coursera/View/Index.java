@@ -13,14 +13,7 @@ import org.coursera.Model.Curso;
 
 @WebServlet(name = "Index", urlPatterns = {"/index"})
 public class Index extends HttpServlet{
-    private String head = "<!doctype HTML>\n" +
-"<script language=\"javascript\" type=\"text/javascript\">\n" +
-"function popitup(url) {\n" +
-"	newwindow=window.open(url,'name',\"resizable=0,height=390,width=780\");\n" +
-"	if (window.focus) {newwindow.focus()}\n" +
-"	return false;\n" +
-"}\n" +
-"</script>\n" +
+    private String head = 
 "<html>\n" +
 "  <head>\n" +
 "    <meta charset=\"utf-8\"/>\n" +
@@ -46,14 +39,13 @@ public class Index extends HttpServlet{
         PrintWriter pw = response.getWriter();
         List<Curso> cursos = ControllerCursos.cursos();
         pw.println(head);
-        user = (String) request.getSession().getAttribute("user");
+        user = (String) request.getSession().getAttribute("mail");
 
         String logado = "";
                 
         if (user == null){
-            logado = "<a href=\"cadastro.html\" onclick=\"return popitup('cadastro.html')\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
-"      <a href=\"login.html\" onclick=\"return popitup('login.html')\" class=\"menuItem\">Entrar</a>\n" +
-"      <a href=\"#\" class=\"menuItem\">Instituições</a>\n";;         
+            logado = "<a href=\"cadastro.html\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
+"      <a href=\"login.html\" class=\"menuItem\">Entrar</a>\n";         
         }else{
             logado = "<span class='menuItem'>Olá " +user + "</span>";   
         }

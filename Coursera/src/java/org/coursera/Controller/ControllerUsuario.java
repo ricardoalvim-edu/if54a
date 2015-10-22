@@ -1,5 +1,7 @@
 package org.coursera.Controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.coursera.Model.Usuario;
 import org.coursera.Util.HibernateUtil;
 import org.hibernate.Query;
@@ -46,6 +48,29 @@ public class ControllerUsuario {
             session.close();
         }
         return resultado;
+    }
+    
+    public static String getSenha(String mail, String senha) {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session session = null;
+        Transaction tx = null;
+        try {
+            session = sf.openSession();
+            tx = session.getTransaction();
+            tx.begin();
+            Query query = session.getNamedQuery("Usuario.todos");
+            ArrayList<Usuario> usuarios = (ArrayList<Usuario>) query.list();
+            for (Usuario u : usuarios) {
+                if (mail.equals(u.getEmail()) || senha.equals(u.getSenha())) {
+                    return "foi";  
+                }
+            }
+        } catch (Exception e) {
+            if (tx != null) tx.rollback();
+        } finally {
+            session.close();
+        }
+        return "n foi";
     }
     
 }

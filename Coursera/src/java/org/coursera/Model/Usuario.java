@@ -18,11 +18,29 @@ public class Usuario {
     private String usuario;
     private String senha;
     private String email;
+    private String tipo_usr;
 
-    public Usuario(String usuario, String senha, String email) {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTipo_usr() {
+        return tipo_usr;
+    }
+
+    public void setTipo_usr(String tipo_usr) {
+        this.tipo_usr = tipo_usr;
+    }
+    
+    public Usuario(String usuario, String senha, String email, String tipo_usr) {
         this.usuario = usuario;
         this.senha = senha;
         this.email = email;
+        this.tipo_usr = tipo_usr;
     }
 
     public Long getIdUsuario() {
