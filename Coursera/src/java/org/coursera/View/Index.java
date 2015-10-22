@@ -67,11 +67,6 @@ public class Index extends HttpServlet{
         String bodyP1 = "<body>\n" +
 "    <div class=\"searchCourses\">\n" +
 "      <p class=\"textSearch\">Faça os melhores cursos online!</p>\n" +
-"      <input type=\"text\" placeholder=\"O que você gostaria de aprender?\" class=\"searcherCourses\"/>\n" +
-"      <br>\n" +
-"      <div class=\"textViewMore\">\n" +
-"        <span>ou <a href=\"#\" class=\"viewMoreLink\">ver lista de cursos.</a></span>\n" +
-"      </div>\n" +
 "      <div class=\"controlInfo\">\n" +
 "        <ul>\n" +
 "          <li class=\"textInfo\"><b>14.969.909</b> Alunos</li>\n" +
