@@ -51,10 +51,6 @@ public class Usuario {
         this.tipo_usr = null;
     }
 
-    public Long getIdUsuario() {
-        return id;
-    }
-
     public String getUsuario() {
         return usuario;
     }

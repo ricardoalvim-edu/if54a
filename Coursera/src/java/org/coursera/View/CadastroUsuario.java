@@ -25,11 +25,13 @@ public class CadastroUsuario extends HttpServlet {
         Usuario usuario = new Usuario(usr, senha, mail, tipo_usr);
         ControllerUsuario ru = new ControllerUsuario();
         boolean resultado = ru.registrar(usuario);
-        HttpSession session = request.getSession();
-        
         if (resultado) {
+            HttpSession session = request.getSession();
             session.setAttribute("mail", mail);
-            response.sendRedirect("cadastro-sucesso.html");
+            session.setAttribute("tipo_usr", tipo_usr);
+            session.setAttribute("usr", usr);
+            session.setAttribute("logado", 1);
+            response.sendRedirect("index");
         } else {
             response.sendRedirect("cadastro-falha.html");
         }

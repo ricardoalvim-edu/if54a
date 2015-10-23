@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
 
@@ -31,7 +32,6 @@ public class Index extends HttpServlet{
 "  </footer>\n" +
 "</html>\n" +
 "";
-    String user = "";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -39,16 +39,19 @@ public class Index extends HttpServlet{
         PrintWriter pw = response.getWriter();
         List<Curso> cursos = ControllerCursos.cursos();
         pw.println(head);
-        user = (String) request.getSession().getAttribute("mail");
-
-        String logado = "";
-                
-        if (user == null){
-            logado = "<a href=\"cadastro.html\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
-"      <a href=\"login.html\" class=\"menuItem\">Entrar</a>\n";         
-        }else{
-            logado = "<span class='menuItem'>Olá " +user + "</span>";   
-        }
+        String logadoHeader = "";
+        if (request.getSession().getAttribute("logado") == null) {
+            logadoHeader = "<a href=\"cadastro.html\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
+"      <a href=\"login.html\" class=\"menuItem\">Entrar</a>\n";        
+            }else{
+            String tipo_usr = (String) request.getSession().getAttribute("tipo_usr");
+            String usuario = (String) request.getSession().getAttribute("usr");
+            if (tipo_usr.equals("normal")) {
+                logadoHeader = "<span class='menuItem'>Olá " + usuario + "</span>";
+            } else if (tipo_usr.equals("administrativo")){
+                logadoHeader = "<span class'menuItem'>Olá " + usuario + ". Você é administrador!</span>";
+            }       
+        } 
         String header = "<header>\n" +
 "    <h1 class=\"logo\">\n" +
 "    </h1>\n" +
@@ -56,7 +59,7 @@ public class Index extends HttpServlet{
 "    <label for=\"control-nav\" class=\"control-nav\"></label>\n" +
 "    <label for=\"control-nav\" class=\"control-nav-close\"></label>\n" +
 "    <nav class=\"fR\">\n" +
-"    <ul class=\"l2\">\n" + logado +                   
+"    <ul class=\"l2\">\n" + logadoHeader +                   
 "    </ul>\n" +
 "  </nav>\n" +
 "  </header>";
@@ -78,7 +81,6 @@ public class Index extends HttpServlet{
         pw.println("<div class='areaEspecializacao'>");
         pw.println("<h1>Novas especializações</h1>");
         pw.println("<div class='box'>");
-        
         if (tamanhoCursos != 0){
             for (Curso c : cursos){
                 pw.println("<div class='boxConteudo'>");
@@ -90,7 +92,6 @@ public class Index extends HttpServlet{
         }else{
             pw.println("<h2 style='text-align: center'>Não há vídeos ainda :(</h2>");
         }
-        
         pw.println("</div>");
         pw.println("</div>");
         pw.println(bodyP2);

@@ -23,8 +23,13 @@ public class Login extends HttpServlet {
         Usuario user = ControllerUsuario.getSenha(mail, senha);
         if (user != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("mail", mail);
+            session.setAttribute("mail", user.getEmail());
+            session.setAttribute("tipo_usr", user.getTipo_usr());
+            session.setAttribute("usr", user.getUsuario());
+            session.setAttribute("logado", 1);
             response.sendRedirect("index");
+        } else {
+            response.sendRedirect("cadastro-falha.html");
         } 
     }
 
