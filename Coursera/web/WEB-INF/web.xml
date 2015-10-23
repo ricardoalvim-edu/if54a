@@ -15,7 +15,7 @@
     </session-config>
     <servlet>
         <servlet-name>logout</servlet-name>
-        <servlet-class>org.coursera.View.logout</servlet-class>
+        <servlet-class>org.coursera.View.Logout</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Index</servlet-name>

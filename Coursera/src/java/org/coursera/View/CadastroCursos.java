@@ -19,7 +19,6 @@ public class CadastroCursos extends HttpServlet{
         String url = request.getParameter("urlImage");
         String universidade = request.getParameter("uni");
         String youtube = request.getParameter("youtube");
-        
         Curso curso = new Curso (nome, description, url, universidade, youtube);
         boolean resultado = ControllerCursos.salvar(curso);
         if (resultado) {

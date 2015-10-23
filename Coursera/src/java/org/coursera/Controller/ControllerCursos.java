@@ -12,7 +12,6 @@ public class ControllerCursos {
     public static boolean salvar(Curso curso){
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
-        
         try{
             s.getTransaction().begin();
             s.save(curso);
@@ -48,7 +47,6 @@ public class ControllerCursos {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         Curso curso = new Curso();
-        
         try{
             s.getTransaction().begin();
             Query query = s.getNamedQuery("Curso.cursoById");

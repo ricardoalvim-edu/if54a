@@ -59,21 +59,15 @@ public class ControllerUsuario {
     
     public static Usuario getSenha(String mail, String senha) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
-        Session session = null;
-        Transaction tx = null;
+        Session session = sf.openSession();
         Usuario user = new Usuario();
         try {
-            session = sf.openSession();
-            tx = session.getTransaction();
-            tx.begin();
-            Query query = session.getNamedQuery("Usuario.userLogin");
-            query.setParameter("mail", mail);
-            query.setParameter("senha", senha);
-            user = (Usuario) query.uniqueResult();
-            System.out.println("oi: " + user.getTipo_usr());
-            tx.commit();
+            session.getTransaction().begin();
+            user = (Usuario) session.getNamedQuery("Usuario.userLogin").setParameter("mail", mail)
+                    .setParameter("senha", senha).uniqueResult();
         } catch (Exception e) {
-            if (tx != null) tx.rollback();
+            e.printStackTrace();
+            if (session.getTransaction() != null) session.getTransaction().rollback();
         } finally {
             session.close();
         }

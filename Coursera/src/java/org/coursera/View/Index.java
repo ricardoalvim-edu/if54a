@@ -8,7 +8,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
 
@@ -49,9 +48,9 @@ public class Index extends HttpServlet{
             String tipo_usr = (String) request.getSession().getAttribute("tipo_usr");
             String usuario = (String) request.getSession().getAttribute("usr");
             if (tipo_usr.equals("normal")) {
-                logadoHeader = "<span class='menuItem'>Olá " + usuario + ". Não é você? <a href=\"logout\">Sair</a>";
+                logadoHeader = "<p class='menuItem'>Olá " + usuario + ". <a href=\"logout\" class=\"menuItem cadastrar\">Sair</a>";
             } else if (tipo_usr.equals("administrativo")){
-                logadoHeader = "<span class='menuItem'>Olá " + usuario + ". Você é administrador!";
+                logadoHeader = "<p class='menuItem'>Olá " + usuario + ".</p> <a href=\"cadastroCurso.\" class=\"menuItem\">Cadastrar Cursos</a> <a href=\"logout\" class=\"menuItem cadastrar\">Sair</a>";
             }       
         } 
         String header = "<header>\n" +

@@ -1,10 +1,7 @@
 package org.coursera.View;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -15,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.coursera.Controller.ControllerUsuario;
 import javax.servlet.http.HttpSession;
 import org.coursera.Model.Usuario;
-import sun.misc.BASE64Encoder;
 
 @WebServlet(name = "CadastroServlet", urlPatterns = {"/CadastroServlet"})
 public class CadastroUsuario extends HttpServlet {
