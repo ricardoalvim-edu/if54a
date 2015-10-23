@@ -1,5 +1,8 @@
 package org.coursera.Controller;
 
+import static com.mchange.v2.c3p0.impl.C3P0Defaults.password;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 import org.coursera.Model.Usuario;
@@ -8,8 +11,19 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import java.math.BigInteger;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 public class ControllerUsuario {
+    
+    public static String criptografa(String senha) throws NoSuchAlgorithmException{  
+        MessageDigest md = MessageDigest.getInstance("MD5");
+ 
+        BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
+ 
+        return String.format("%32x", hash);
+    }  
     
     public boolean registrar (Usuario usr) {
         SessionFactory sf = HibernateUtil.getSessionFactory();

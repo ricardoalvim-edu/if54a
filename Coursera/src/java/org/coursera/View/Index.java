@@ -32,6 +32,7 @@ public class Index extends HttpServlet{
 "</html>\n" +
 "";
     String user = "";
+    String log = "";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -40,14 +41,14 @@ public class Index extends HttpServlet{
         List<Curso> cursos = ControllerCursos.cursos();
         pw.println(head);
         user = (String) request.getSession().getAttribute("mail");
-
+        log = (String) request.getSession().getAttribute("logado");
         String logado = "";
                 
-        if (user == null){
+        if (user == null && logado.equals("")){
             logado = "<a href=\"cadastro.html\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
 "      <a href=\"login.html\" class=\"menuItem\">Entrar</a>\n";         
         }else{
-            logado = "<span class='menuItem'>Olá " +user + "</span>";   
+            logado = "<span class='menuItem'>Olá " +user + ". Não é você? Faça logout <a href=logout>Sair</a>";   
         }
         String header = "<header>\n" +
 "    <h1 class=\"logo\">\n" +
