@@ -10,7 +10,7 @@ import javax.persistence.NamedQuery;
     @NamedQuery(name="Curso.todos", query = "SELECT c FROM Curso c"),
     @NamedQuery(name="Curso.cursoById", query = "SELECT c FROM Curso c WHERE c.idCursos = :idCurso")
 })
-@Entity (name = "Curso")
+@Entity(name = "Curso")
 public class Curso {
     @Id @GeneratedValue
     private int idCursos;

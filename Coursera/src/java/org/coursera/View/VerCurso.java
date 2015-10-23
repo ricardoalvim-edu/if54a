@@ -11,10 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
 
-/**
- *
- * @autor ricar
- */
+
 @WebServlet(name = "VerCurso", urlPatterns = {"/VerCurso"})
 public class VerCurso extends HttpServlet{
     private String head = "<!doctype HTML>\n" +
@@ -61,7 +58,6 @@ public class VerCurso extends HttpServlet{
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
         String id = request.getParameter("id");
-        
         Curso c = ControllerCursos.cursoPorId(id);
         String title = "<h1 class='courseName' >"+c.getNome()+"</h1>";
         String university = "<h2 class='courseUni'>"+c.getUni()+"</h2>";

@@ -32,6 +32,8 @@ public class Index extends HttpServlet{
 "  </footer>\n" +
 "</html>\n" +
 "";
+
+    String log = "";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -43,13 +45,13 @@ public class Index extends HttpServlet{
         if (request.getSession().getAttribute("logado") == null) {
             logadoHeader = "<a href=\"cadastro.html\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
 "      <a href=\"login.html\" class=\"menuItem\">Entrar</a>\n";        
-            }else{
+        } else {
             String tipo_usr = (String) request.getSession().getAttribute("tipo_usr");
             String usuario = (String) request.getSession().getAttribute("usr");
             if (tipo_usr.equals("normal")) {
-                logadoHeader = "<span class='menuItem'>Olá " + usuario + "</span>";
+                logadoHeader = "<span class='menuItem'>Olá " + usuario + ". Não é você? <a href=\"logout\">Sair</a>";
             } else if (tipo_usr.equals("administrativo")){
-                logadoHeader = "<span class'menuItem'>Olá " + usuario + ". Você é administrador!</span>";
+                logadoHeader = "<span class='menuItem'>Olá " + usuario + ". Você é administrador!";
             }       
         } 
         String header = "<header>\n" +
