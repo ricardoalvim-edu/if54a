@@ -1,6 +1,6 @@
-package org.coursera.Controller;
+package org.coursera.Model;
 
-import org.coursera.Model.Usuario;
+import org.coursera.Entity.Usuario;
 import org.coursera.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
@@ -10,9 +10,9 @@ import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import org.coursera.Model.Curso;
+import org.coursera.Entity.Curso;
 
-public class ControllerUsuario {
+public class ModelUsuario {
     
     public static String criptografa(String senha) throws NoSuchAlgorithmException{  
         MessageDigest md = MessageDigest.getInstance("MD5");

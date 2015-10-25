@@ -1,4 +1,4 @@
-package org.coursera.View;
+package org.coursera.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -10,12 +10,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.coursera.Controller.ControllerUsuario;
 import javax.servlet.http.HttpSession;
-import org.coursera.Model.Usuario;
-import org.coursera.Util.HTML;
+import org.coursera.Entity.Usuario;
+import org.coursera.Model.HTML;
+import org.coursera.Model.ModelUsuario;
 
-@WebServlet(name = "CadastroServlet", urlPatterns = {"/CadastroServlet"})
+@WebServlet(name = "CadastroUsuarioServlet", urlPatterns = {"/CadastroUsuarioServlet"})
 public class CadastroUsuario extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -26,13 +26,13 @@ public class CadastroUsuario extends HttpServlet {
         String senha = request.getParameter("senha");
         PrintWriter pw = response.getWriter();
         try {
-            senha = ControllerUsuario.criptografa(senha);
+            senha = ModelUsuario.criptografa(senha);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
         String tipo_usr = "normal";
         Usuario usuario = new Usuario(usr, senha , mail, tipo_usr);
-        ControllerUsuario ru = new ControllerUsuario();
+        ModelUsuario ru = new ModelUsuario();
         boolean resultado = ru.registrar(usuario);
         if (resultado) {
             HttpSession session = request.getSession();

@@ -1,13 +1,13 @@
-package org.coursera.Controller;
+package org.coursera.Model;
 
 import java.util.List;
-import org.coursera.Model.Curso;
+import org.coursera.Entity.Curso;
 import org.coursera.Util.HibernateUtil;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-public class ControllerCursos {
+public class ModelCursos {
 
     public static boolean salvar(Curso curso){
         SessionFactory sf = HibernateUtil.getSessionFactory();

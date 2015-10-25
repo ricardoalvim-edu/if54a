@@ -1,9 +1,9 @@
-package org.coursera.Util;
+package org.coursera.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import org.coursera.Controller.ControllerCursos;
-import org.coursera.Controller.ControllerUsuario;
-import org.coursera.Model.Curso;
+import org.coursera.Model.ModelCursos;
+import org.coursera.Model.ModelUsuario;
+import org.coursera.Entity.Curso;
 
 public class HTML {
     public static String head(String titulo) {
@@ -27,7 +27,7 @@ public class HTML {
     public static String bodyInicio(HttpServletRequest request) {
         String logadoHeader = "";
         if (request.getSession().getAttribute("logado") == null) {
-            logadoHeader = "<a href=\"cadastro.html\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
+            logadoHeader = "<a href=\"CadastroUsuario\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
 "      <a href=\"login.html\" class=\"menuItem\">Entrar</a> <a href='index' class='menuItem'>Página Inicial</a>\n";        
         } else {
             String tipo_usr = (String) request.getSession().getAttribute("tipo_usr");
@@ -35,7 +35,7 @@ public class HTML {
             if (tipo_usr.equals("normal")) {
                 logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"logout\" class=\"menuItem cadastrar\">Sair</a> <a href='index' class='menuItem'>Página Inicial</a> ";
             } else if (tipo_usr.equals("administrativo")){
-                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"logout\" class=\"menuItem cadastrar\">Sair</a> <a href=\"cadastroCurso.html\" class=\"menuItem\">Cadastrar Cursos</a> <a href='index' class='menuItem'>Página Inicial</a> ";
+                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"logout\" class=\"menuItem cadastrar\">Sair</a> <a href=\"CadastroCursos\" class=\"menuItem\">Cadastrar Cursos</a> <a href='index' class='menuItem'>Página Inicial</a> ";
             }       
         }
         String header = "<header>\n" +
@@ -58,8 +58,8 @@ public class HTML {
                "      <p class=\"textSearch\">Faça os melhores cursos online!</p>\n" +
                "      <div class=\"controlInfo\">\n" +
                "        <ul>\n" +
-               "          <li class=\"textInfo\"><b> " + ControllerUsuario.tamanhoUsuario() + "</b> Alunos</li>\n" +
-               "          <li class=\"textInfo\">- <b>" + ControllerCursos.tamanhoCurso() +"</b> Cursos </li>\n" +
+               "          <li class=\"textInfo\"><b> " + ModelUsuario.tamanhoUsuario() + "</b> Alunos</li>\n" +
+               "          <li class=\"textInfo\">- <b>" + ModelCursos.tamanhoCurso() +"</b> Cursos </li>\n" +
                "        </ul>\n" +
                "      </div>\n" +
                "    </div>" +
@@ -73,8 +73,8 @@ public class HTML {
         String body3 = "";
         StringBuilder buf = new StringBuilder();
         StringBuilder body = new StringBuilder();
-        if (ControllerCursos.tamanhoCurso() != 0){
-            for (Curso c : ControllerCursos.cursos()){
+        if (ModelCursos.tamanhoCurso() != 0){
+            for (Curso c : ModelCursos.cursos()){
                 body3 = "\n<div class='boxConteudo'>\n" +
                                 "<div class='imgBox' style=\"background-image: "
                         + "url('"+ c.getUrlImagem() +"') \"> </div>\n" +
@@ -92,7 +92,7 @@ public class HTML {
     }
     
     public static String bodyCurso(String id){
-        Curso c = ControllerCursos.cursoPorId(id);
+        Curso c = ModelCursos.cursoPorId(id);
         String body = "<h1 class='courseName' >" + c.getNome() + "</h1>\n" +
                       "<h2 class='courseUni'>" + c.getUni() + "</h2>\n" +
                       "<p class='descCourse'>" + c.getDescricao() + "</h2>\n" +
@@ -107,6 +107,50 @@ public class HTML {
         String erro = "<p><center>" + mensagem + "</p></center>"; 
         builder.append(head("Erro - Coursera")).append(bodyInicio(request)).append(erro).append(bodyFinal());
         return builder;
+    }
+    
+    public static String bodyCadastroCurso() {
+        return "<body>\n" +
+               "<h1 class='logo logoCadastro'></h1>\n" +
+               "<p class='textCadastro'>Acesso global à melhor educação do mundo!</p>\n" +
+               "<div class='formCadastro'>\n" +
+               "<form action='./CadastroCursosServlet' method='post' accept-charset='utf-8'>\n" +
+               "<br>\n" +
+               "<input type='text' placeholder='Nome do curso' name='nome'/>\n" +
+               "<br>\n" +
+               "<input type='text' placeholder='Descrição' name='desc'/>\n" +
+               "<br>\n" +
+               "<input type='text' placeholder='Imagem' name='urlImage'/>\n" +
+               "<br>\n" +
+               "<input type='text' placeholder='Universidade' name='uni'/>\n" +
+               "<br>\n" +
+               "<input type='text' placeholder='YouTube' name='youtube'/>\n" +
+               "<br>\n" +
+               "<button type='submit'>Salvar</button>\n" +
+               "</form>\n" +
+               "</div>\n" +
+               "</body>\n" +
+               "</html>";
+    }
+    
+    public static String bodyCadastroUsuario() {
+        return "<body>\n" +
+               "<h1 class='logo logoCadastro'></h1>\n" +
+               "<p class='textCadastro'>Acesso global à melhor educação do mundo!</p>\n" +
+               "<div class='formCadastro'>\n" +
+               "<form action='./CadastroUsuarioServlet' method='post' accept-charset='utf-8'>\n" +
+               "<br>\n" +
+               "<input type='text' placeholder='Usuario' name='usr'/>\n" +
+               "<br>\n" +
+               "<input type='email' placeholder='Email' name='mail'/>\n" +
+               "<br>\n" +
+               "<input type='password' placeholder='Senha' name='senha'/>" +
+               "<br>\n" +
+               "<button type='submit'>Cadastre-se</button>\n" +
+               "</form>\n" +
+               "</div>\n" +
+               "</body>\n" +
+               "</html>";
     }
     
     public static String aviso(String mensagem) {

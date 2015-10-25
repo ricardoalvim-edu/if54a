@@ -1,5 +1,7 @@
-package org.coursera.View;
+package org.coursera.Controller;
 
+import org.coursera.Model.HTML;
+import org.coursera.Controller.CadastroUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
@@ -11,9 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.coursera.Controller.ControllerUsuario;
-import org.coursera.Model.Usuario;
-import org.coursera.Util.HTML;
+import org.coursera.Model.ModelUsuario;
+import org.coursera.Entity.Usuario;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class Login extends HttpServlet {
@@ -24,11 +25,11 @@ public class Login extends HttpServlet {
         String senha = request.getParameter("senha");
         PrintWriter pw = response.getWriter();
         try {
-            senha = ControllerUsuario.criptografa(senha);
+            senha = ModelUsuario.criptografa(senha);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        Usuario user = ControllerUsuario.getSenha(mail, senha);
+        Usuario user = ModelUsuario.getSenha(mail, senha);
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("mail", user.getEmail());
