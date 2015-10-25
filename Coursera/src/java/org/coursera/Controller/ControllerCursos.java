@@ -43,7 +43,7 @@ public class ControllerCursos {
         return cursos;
     } 
     
-     public static Curso cursoPorId(String id){
+    public static Curso cursoPorId(String id){
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         Curso curso = new Curso();
@@ -60,5 +60,14 @@ public class ControllerCursos {
             s.close();
         }
         return curso;
-    } 
+    }
+    
+    public static int tamanhoCurso(){
+        List<Curso> cs = cursos();
+        int tamanhoCursos = 0;
+        if (cs != null && cs.size() > 0) {
+            tamanhoCursos = cs.size();
+        }
+        return tamanhoCursos;
+    }
 }

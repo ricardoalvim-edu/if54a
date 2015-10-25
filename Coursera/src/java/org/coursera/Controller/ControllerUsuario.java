@@ -9,6 +9,8 @@ import org.hibernate.Transaction;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.List;
+import org.coursera.Model.Curso;
 
 public class ControllerUsuario {
     
@@ -18,7 +20,7 @@ public class ControllerUsuario {
         return String.format("%32x", hash);
     }  
     
-    public boolean registrar (Usuario usr) {
+    public boolean registrar(Usuario usr) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = null;
         Transaction tx = null;
@@ -37,7 +39,7 @@ public class ControllerUsuario {
         return true;
     }
     
-    public boolean usuarioExiste (Usuario usr) {
+    public boolean usuarioExiste(Usuario usr) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = null;
         Transaction tx = null;
@@ -72,5 +74,20 @@ public class ControllerUsuario {
             session.close();
         }
         return user;
-    }  
+    }
+    
+    public static int tamanhoUsuario() {
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        List<Usuario> usuario = null;
+        try {
+            s.getTransaction().begin();
+            Query query = s.getNamedQuery("Usuario.todos");
+            usuario = query.list();
+            s.getTransaction().commit();
+        } catch (Exception ex){
+            System.out.println("Exception: "+ ex.getMessage());
+        }
+        return usuario.size();
+    }
 }

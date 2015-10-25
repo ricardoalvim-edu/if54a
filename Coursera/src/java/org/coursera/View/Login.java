@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.coursera.Controller.ControllerUsuario;
 import org.coursera.Model.Usuario;
+import org.coursera.Util.HTML;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class Login extends HttpServlet {
@@ -21,6 +22,7 @@ public class Login extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String mail = request.getParameter("mail");        
         String senha = request.getParameter("senha");
+        PrintWriter pw = response.getWriter();
         try {
             senha = ControllerUsuario.criptografa(senha);
         } catch (NoSuchAlgorithmException ex) {
@@ -35,7 +37,7 @@ public class Login extends HttpServlet {
             session.setAttribute("logado", 1);
             response.sendRedirect("index");
         } else {
-            response.sendRedirect("cadastro-falha.html");
+            pw.println(HTML.aviso("E-mail ou senha invalidos.", request));
         } 
     }
 

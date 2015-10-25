@@ -1,6 +1,7 @@
 package org.coursera.View;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.coursera.Controller.ControllerUsuario;
 import javax.servlet.http.HttpSession;
 import org.coursera.Model.Usuario;
+import org.coursera.Util.HTML;
 
 @WebServlet(name = "CadastroServlet", urlPatterns = {"/CadastroServlet"})
 public class CadastroUsuario extends HttpServlet {
@@ -21,8 +23,8 @@ public class CadastroUsuario extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String usr = request.getParameter("usr");
         String mail = request.getParameter("mail");
-        
         String senha = request.getParameter("senha");
+        PrintWriter pw = response.getWriter();
         try {
             senha = ControllerUsuario.criptografa(senha);
         } catch (NoSuchAlgorithmException ex) {
@@ -40,7 +42,7 @@ public class CadastroUsuario extends HttpServlet {
             session.setAttribute("logado", 1);
             response.sendRedirect("index");
         } else {
-            response.sendRedirect("cadastro-falha.html");
+            pw.println(HTML.aviso("Algo de errado aconteceu com seu cadastro! Contate um administrador.", request));
         }
     }
     @Override

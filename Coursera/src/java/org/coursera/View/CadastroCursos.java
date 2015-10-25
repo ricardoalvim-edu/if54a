@@ -1,6 +1,7 @@
 package org.coursera.View;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.coursera.Controller.ControllerCursos;
 import org.coursera.Model.Curso;
+import org.coursera.Util.HTML;
 
 @WebServlet(name = "CadastroCursos", urlPatterns = {"/CadastroCursos"})
 public class CadastroCursos extends HttpServlet{
@@ -21,10 +23,11 @@ public class CadastroCursos extends HttpServlet{
         String youtube = request.getParameter("youtube");
         Curso curso = new Curso (nome, description, url, universidade, youtube);
         boolean resultado = ControllerCursos.salvar(curso);
+        PrintWriter pw = response.getWriter();
         if (resultado) {
-            response.sendRedirect("cadastro-sucesso.html");
+            pw.println(HTML.aviso("Cadastro feito com sucesso! <a href='index'>Volte para a página principal.</a>", request));
         } else {
-            response.sendRedirect("cadastro-falha.html");
+            pw.println(HTML.aviso("Algo de errado aconteceu com o cadastro do curso! Contate um administrador. <p></p> <a href='index'>Volte para a página principal.</a>", request));
         }
     }
     @Override
