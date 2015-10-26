@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.coursera.Model.ModelUsuario;
 
 @WebServlet(name = "Index", urlPatterns = {"/index"})
 public class Index extends HttpServlet{
@@ -16,11 +17,15 @@ public class Index extends HttpServlet{
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
-        pw.println(HTML.head("Inicio - Coursera"));
-        pw.println(HTML.bodyInicio(request));
-        pw.println(HTML.bodyMeio());
-        pw.println(HTML.bodyMeio2());
-        pw.println(HTML.bodyFinal());
+        if (ModelUsuario.primeiroUsuario()) {
+            response.sendRedirect("CadastroUsuario");
+        } else {
+            pw.println(HTML.head("Inicio - Coursera"));
+            pw.println(HTML.bodyInicio(request));
+            pw.println(HTML.bodyMeio());
+            pw.println(HTML.bodyMeio2());
+            pw.println(HTML.bodyFinal());
+        }
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

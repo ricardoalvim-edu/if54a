@@ -90,4 +90,8 @@ public class ModelUsuario {
         }
         return usuario.size();
     }
+    
+    public static boolean primeiroUsuario() {
+        return tamanhoUsuario() == 0;
+    }
 }

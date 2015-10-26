@@ -25,12 +25,17 @@ public class CadastroUsuario extends HttpServlet {
         String mail = request.getParameter("mail");
         String senha = request.getParameter("senha");
         PrintWriter pw = response.getWriter();
+        String tipo_usr = "";
         try {
             senha = ModelUsuario.criptografa(senha);
         } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
         }
-        String tipo_usr = "normal";
+        if (ModelUsuario.primeiroUsuario()) {
+            tipo_usr = "administrativo";
+        } else {
+            tipo_usr = "normal";
+        }    
         Usuario usuario = new Usuario(usr, senha , mail, tipo_usr);
         ModelUsuario ru = new ModelUsuario();
         boolean resultado = ru.registrar(usuario);
@@ -44,6 +49,7 @@ public class CadastroUsuario extends HttpServlet {
         } else {
             pw.println(HTML.aviso("Algo de errado aconteceu com seu cadastro! Contate um administrador.", request));
         }
+        
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

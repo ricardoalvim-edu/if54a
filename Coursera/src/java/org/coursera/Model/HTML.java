@@ -26,7 +26,7 @@ public class HTML {
         String logadoHeader = "";
         if (request.getSession().getAttribute("logado") == null) {
             logadoHeader = "<a href=\"CadastroUsuario\" class=\"menuItem cadastrar\">Cadastre-se</a>\n" +
-"      <a href=\"login.html\" class=\"menuItem\">Entrar</a> <a href='index' class='menuItem'>Página Inicial</a>\n";        
+"      <a href=\"Login\" class=\"menuItem\">Entrar</a> <a href='index' class='menuItem'>Página Inicial</a>\n";        
         } else {
             String tipo_usr = (String) request.getSession().getAttribute("tipo_usr");
             String usuario = (String) request.getSession().getAttribute("usr");
@@ -132,9 +132,15 @@ public class HTML {
     }
     
     public static String bodyCadastroUsuario() {
-        return "<body>\n" +
+        String msg2 = "";
+        if (ModelUsuario.primeiroUsuario()) {
+            msg2 = "Bem vindo! Cadastre o primeiro usuario administrativo para inicar o Coursera.";
+        } else {
+            msg2 = "Acesso global à melhor educação do mundo!";
+        }
+        String msg = "<body>\n" +
                "<h1 class='logo logoCadastro'></h1>\n" +
-               "<p class='textCadastro'>Acesso global à melhor educação do mundo!</p>\n" +
+               "<p class='textCadastro'>" + msg2 + "</p>\n" +
                "<div class='formCadastro'>\n" +
                "<form action='./CadastroUsuarioServlet' method='post' accept-charset='utf-8'>\n" +
                "<br>\n" +
@@ -149,9 +155,38 @@ public class HTML {
                "</div>\n" +
                "</body>\n" +
                "</html>";
+        return msg;
+    }
+    
+    public static String bodyLogin(){
+        return "<body>\n" +
+               "<h1 class='logo logoCadastro'></h1>\n" +
+               "<p class='textCadastro'>Acesso global à melhor educação do mundo!</p>\n" +
+               "<div class='formCadastro formLogin'>\n" +
+               "<form action='LoginServlet' method='post'>\n" +
+               "<br>\n" +
+               "<input type='email' placeholder='Email' name='mail'/>\n" +
+               "<br>\n" +
+               "<input type='password' placeholder='Senha' name='senha'/>\n" +
+               "<br>\n" +
+               "<button type='submit'>Entre</button>\n" +
+               "</form>\n" +
+               "</div>\n" +
+               "</body>\n" +
+               "</html>";
     }
     
     public static String aviso(String mensagem) {
         return "<p><center>" + mensagem + "</p></center>";
+    }
+    
+    public static String avisoJS(String mensagem) {
+        return "<html>\n" +
+               "<body>\n" +
+               "<script>\n" +
+               "alert('Você é o primeiro usuario! Iremos cadastrar você como administrador. Pressione OK para continuar.')\n" +
+               "</script>\n" +
+               "</body>" +
+               "<html>";
     }
 }

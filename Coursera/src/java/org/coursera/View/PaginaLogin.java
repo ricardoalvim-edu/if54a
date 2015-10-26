@@ -9,18 +9,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.coursera.Model.HTML;
 
-@WebServlet(name = "CadastroUsuario", urlPatterns = {"/CadastroUsuario"})
-public class PaginaCadastroUsuario extends HttpServlet {
+@WebServlet(name = "Login", urlPatterns = {"/Login"})
+public class PaginaLogin extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter pw = response.getWriter();
-        if (request.getSession().getAttribute("logado") == null) {
-            pw.println(HTML.head("Cadastre-se - Coursera"));
-            pw.println(HTML.bodyCadastroUsuario());
+        if (request.getSession().getAttribute("logado") != null) {
+            pw.println(HTML.aviso("Você está logado! Para entrar um novo usuario, saia do usuario atual.", request));
         } else {
-            pw.println(HTML.aviso("Você está logado! Para cadastrar um novo usuario, saia do usuario atual.", request));
+            pw.println(HTML.head("Login - Coursera"));
+            pw.println(HTML.bodyInicio(request));
+            pw.println(HTML.bodyLogin());    
         }
     }
 
