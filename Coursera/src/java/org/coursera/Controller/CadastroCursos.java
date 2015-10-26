@@ -1,3 +1,12 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet efetua o cadastro do curso de fato, com as regras de negócio.
+Não são tratadas restrições neste caso.
+*/
+
 package org.coursera.Controller;
 
 import java.io.IOException;

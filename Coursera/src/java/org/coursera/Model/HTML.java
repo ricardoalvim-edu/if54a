@@ -1,6 +1,13 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta classe retorna strings de HTML para melhor organização do código e reuso.
+*/
+
 package org.coursera.Model;
 
-import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.coursera.Entity.Curso;
 import org.coursera.Entity.Usuario;

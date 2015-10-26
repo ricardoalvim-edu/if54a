@@ -1,3 +1,11 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta classe é utilizada para fazer a criptografia utilizando bcrypt. 
+*/
+
 // Copyright (c) 2006 Damien Miller <djm@mindrot.org>
 //
 // Permission to use, copy, modify, and distribute this software for any

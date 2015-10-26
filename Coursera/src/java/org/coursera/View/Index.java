@@ -1,3 +1,12 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet é a página inicial do programa. Ela verifica se já tem pessoas
+cadastradas, se não, ele redireciona para o cadastro do administrador.
+*/
+
 package org.coursera.View;
 
 import org.coursera.Model.HTML;
@@ -43,5 +52,5 @@ public class Index extends HttpServlet{
     @Override
     public String getServletInfo() {
         return "Short description";
-    }// </editor-fold>
+    }
 }

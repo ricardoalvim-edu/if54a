@@ -1,3 +1,13 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet efetua o login, com as regras de negócio. Neste caso, apenas são tratados
+se o usuario e senha estão certos. Como padrão de mercado, não é dito qual campo está errado
+em especifico.
+*/
+
 package org.coursera.Controller;
 
 import org.coursera.Model.HTML;

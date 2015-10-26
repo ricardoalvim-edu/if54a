@@ -1,3 +1,13 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet é a página de cadastro de usuario. Ele verifica se já existe uma sessão,
+se existe, mostra uma mensagem de erro. Se não, envia para uma outra servlet, que faz as
+regras de negócio e efetua o cadastro.
+*/
+
 package org.coursera.View;
 
 import java.io.IOException;

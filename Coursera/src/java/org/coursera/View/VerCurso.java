@@ -1,3 +1,14 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet é a página individual do curso. Ela verifica se um parametro é enviado,
+para evitar acessos sem parametro, que mostrariam apenas "null".
+Uma "falha" é que a pessoa pode alterar o parametro e por outro numero, mostrando null.
+Não foi arrumado devido tempo.
+*/
+
 package org.coursera.View;
 
 import org.coursera.Model.HTML;
@@ -21,8 +32,7 @@ public class VerCurso extends HttpServlet{
         if (id != null) {  
             pw.println(HTML.bodyCurso(id));
         } else {
-            String aviso = "Ops! Você fez algo errado Volte para a <a href='index'>página principal</a>.";
-            pw.println(HTML.aviso(aviso));
+            pw.println(HTML.aviso("Ops! Você fez algo errado Volte para a <a href='index'>página principal</a>."));
         }
         pw.println(HTML.bodyFinal());
     }

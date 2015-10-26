@@ -1,3 +1,12 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet é a página de login. Ela verifica se existe uma sessão, se não,
+é enviado para outra servlet que faz as regras de negocio e efetua o login.
+*/
+
 package org.coursera.View;
 
 import java.io.IOException;

@@ -1,3 +1,13 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet é a página de cadastro de cursos. Ele verifica se o usuario está logado, 
+e se é um usuario administrativo. Caso tudo de certo, ele envia os dados para outra servlet,
+que faz as regras de negócio e efetua o cadastro.
+*/
+
 package org.coursera.View;
 
 import org.coursera.Model.HTML;

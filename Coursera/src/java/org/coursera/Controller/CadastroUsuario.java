@@ -1,3 +1,13 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet é para o cadastro do usuário, com as regras de negócio.
+São tratados se o email ou o usuario já existem. A senha é criptografada utilizando
+BCrypt.
+*/
+
 package org.coursera.Controller;
 
 import java.io.IOException;

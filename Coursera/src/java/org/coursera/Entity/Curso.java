@@ -1,3 +1,11 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Classe de entidade para os cursos.
+*/
+
 package org.coursera.Entity;
 
 import javax.persistence.Entity;

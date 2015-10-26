@@ -1,3 +1,11 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet faz o logout, invalidando a session e redirecionando para a home.
+*/
+
 package org.coursera.Controller;
 
 import java.io.IOException;

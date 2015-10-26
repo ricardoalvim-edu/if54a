@@ -1,3 +1,12 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Esta servlet é a página de lista de usuarios. É verificado se o usuario está logado
+e tem permissões administrativas.
+*/
+
 package org.coursera.View;
 
 import java.io.IOException;

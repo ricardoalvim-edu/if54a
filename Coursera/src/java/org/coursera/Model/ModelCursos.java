@@ -1,3 +1,11 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Classe que manipula inserção e obtenção de dados em relação aos cursos.
+*/
+
 package org.coursera.Model;
 
 import java.util.List;
