@@ -1,3 +1,11 @@
+/*
+Trabalho de Programação Web
+Alunos: Athos e Ricardo
+Tema: coursera.org
+
+Classe auxiliar do Hibernate, criada pelo NetBeans.
+*/
+
 package org.coursera.Util;
 
 import org.hibernate.cfg.AnnotationConfiguration;
