@@ -9,7 +9,7 @@ import javax.persistence.NamedQuery;
 
 @NamedQueries({
     @NamedQuery(name="Usuario.todos", query = "SELECT u FROM Usuario u"),
-    @NamedQuery(name="Usuario.usuarioById", query = "SELECT u FROM Usuario u WHERE u.id = :id"),
+    @NamedQuery(name="Usuario.usuariobyUsr", query = "SELECT u FROM Usuario u WHERE u.usuario = :usuario"),
     @NamedQuery(name="Usuario.userLogin", query = "FROM Usuario u WHERE u.email = :mail")
 })
 @Entity

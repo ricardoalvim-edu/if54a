@@ -29,7 +29,7 @@ public class ModelUsuario {
         return true;
     }
     
-    public boolean usuarioExiste(Usuario usr) {
+    public static boolean usuarioExiste(String usr) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = null;
         Transaction tx = null;
@@ -38,8 +38,7 @@ public class ModelUsuario {
             session = sf.openSession();
             tx = session.getTransaction();
             tx.begin();
-            Query query = session.getNamedQuery("Usuario.usuariobyId");
-            Usuario u = (Usuario)query.uniqueResult();
+            Usuario u = (Usuario) session.getNamedQuery("Usuario.usuariobyUsr").setParameter("usuario", usr).uniqueResult();
             if(u!=null) resultado = true;
         } catch (Exception e) {
             if (tx != null) tx.rollback();
@@ -64,6 +63,8 @@ public class ModelUsuario {
         }
         return user;
     }
+    
+    
     
     public static int tamanhoUsuario() {
         SessionFactory sf = HibernateUtil.getSessionFactory();

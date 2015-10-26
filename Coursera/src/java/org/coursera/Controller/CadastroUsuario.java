@@ -2,9 +2,6 @@ package org.coursera.Controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.security.NoSuchAlgorithmException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -26,27 +23,32 @@ public class CadastroUsuario extends HttpServlet {
         String mail = request.getParameter("mail");
         String senha = request.getParameter("senha");
         PrintWriter pw = response.getWriter();
-        String tipo_usr = "";
-        String hashed = BCrypt.hashpw(senha, BCrypt.gensalt());
-        if (ModelUsuario.primeiroUsuario()) {
-            tipo_usr = "administrativo";
+        if (ModelUsuario.usuarioExiste(usr)) {
+            pw.println(HTML.aviso("Já registraram este usuario. Escolha outro!", request));
+        } else if (ModelUsuario.getUsuario(mail) != null && ModelUsuario.getUsuario(mail).getEmail().equals(mail)) {
+            pw.println(HTML.aviso("Já registraram com este email. Escolha outro!", request));
         } else {
-            tipo_usr = "normal";
-        }    
-        Usuario usuario = new Usuario(usr, hashed, mail, tipo_usr);
-        ModelUsuario ru = new ModelUsuario();
-        boolean resultado = ru.registrar(usuario);
-        if (resultado) {
-            HttpSession session = request.getSession();
-            session.setAttribute("mail", mail);
-            session.setAttribute("tipo_usr", tipo_usr);
-            session.setAttribute("usr", usr);
-            session.setAttribute("logado", 1);
-            response.sendRedirect("index");
-        } else {
-            pw.println(HTML.aviso("Algo de errado aconteceu com seu cadastro! Contate um administrador.", request));
+            String tipo_usr = "";
+            String hashed = BCrypt.hashpw(senha, BCrypt.gensalt());
+            if (ModelUsuario.primeiroUsuario()) {
+                tipo_usr = "administrativo";
+            } else {
+                tipo_usr = "normal";
+            }    
+            Usuario usuario = new Usuario(usr, hashed, mail, tipo_usr);
+            ModelUsuario ru = new ModelUsuario();
+            boolean resultado = ru.registrar(usuario);
+            if (resultado) {
+                HttpSession session = request.getSession();
+                session.setAttribute("mail", mail);
+                session.setAttribute("tipo_usr", tipo_usr);
+                session.setAttribute("usr", usr);
+                session.setAttribute("logado", 1);
+                response.sendRedirect("index");
+            } else {
+                pw.println(HTML.aviso("Algo de errado aconteceu com seu cadastro! Contate um administrador.", request));
+            }
         }
-        
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
