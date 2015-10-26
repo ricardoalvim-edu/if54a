@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.coursera.Model.ModelUsuario;
 import org.coursera.Entity.Usuario;
+import org.mindrot.jbcrypt.BCrypt;
 
 @WebServlet(name = "LoginServlet", urlPatterns = {"/LoginServlet"})
 public class Login extends HttpServlet {
@@ -23,21 +24,20 @@ public class Login extends HttpServlet {
         String mail = request.getParameter("mail");        
         String senha = request.getParameter("senha");
         PrintWriter pw = response.getWriter();
-        try {
-            senha = ModelUsuario.criptografa(senha);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        Usuario user = ModelUsuario.getSenha(mail, senha);
+        Usuario user = ModelUsuario.getUsuario(mail);
         if (user != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("mail", user.getEmail());
-            session.setAttribute("tipo_usr", user.getTipo_usr());
-            session.setAttribute("usr", user.getUsuario());
-            session.setAttribute("logado", 1);
-            response.sendRedirect("index");
+            if (BCrypt.checkpw(senha, user.getSenha())) {
+                HttpSession session = request.getSession();
+                session.setAttribute("mail", user.getEmail());
+                session.setAttribute("tipo_usr", user.getTipo_usr());
+                session.setAttribute("usr", user.getUsuario());
+                session.setAttribute("logado", 1);
+                response.sendRedirect("index");
+            } else {
+                pw.println(HTML.aviso("E-mail ou senha invalidos.", request));
+            }
         } else {
-            pw.println(HTML.aviso("E-mail ou senha invalidos.", request));
+            pw.println(HTML.aviso("E-mail ou senha invalidos!", request));
         } 
     }
 

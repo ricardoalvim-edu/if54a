@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 import org.coursera.Entity.Usuario;
 import org.coursera.Model.HTML;
 import org.coursera.Model.ModelUsuario;
+import org.mindrot.jbcrypt.BCrypt;
 
 @WebServlet(name = "CadastroUsuarioServlet", urlPatterns = {"/CadastroUsuarioServlet"})
 public class CadastroUsuario extends HttpServlet {
@@ -26,17 +27,13 @@ public class CadastroUsuario extends HttpServlet {
         String senha = request.getParameter("senha");
         PrintWriter pw = response.getWriter();
         String tipo_usr = "";
-        try {
-            senha = ModelUsuario.criptografa(senha);
-        } catch (NoSuchAlgorithmException ex) {
-            Logger.getLogger(CadastroUsuario.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String hashed = BCrypt.hashpw(senha, BCrypt.gensalt());
         if (ModelUsuario.primeiroUsuario()) {
             tipo_usr = "administrativo";
         } else {
             tipo_usr = "normal";
         }    
-        Usuario usuario = new Usuario(usr, senha , mail, tipo_usr);
+        Usuario usuario = new Usuario(usr, hashed, mail, tipo_usr);
         ModelUsuario ru = new ModelUsuario();
         boolean resultado = ru.registrar(usuario);
         if (resultado) {

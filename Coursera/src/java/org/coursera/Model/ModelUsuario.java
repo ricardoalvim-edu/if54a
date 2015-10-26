@@ -6,20 +6,10 @@ import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-import java.math.BigInteger;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
-import org.coursera.Entity.Curso;
 
 public class ModelUsuario {
-    
-    public static String criptografa(String senha) throws NoSuchAlgorithmException{  
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        BigInteger hash = new BigInteger(1, md.digest(senha.getBytes()));
-        return String.format("%32x", hash);
-    }  
-    
+   
     public boolean registrar(Usuario usr) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = null;
@@ -59,14 +49,13 @@ public class ModelUsuario {
         return resultado;
     }
     
-    public static Usuario getSenha(String mail, String senha) {
+    public static Usuario getUsuario(String mail) {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session session = sf.openSession();
         Usuario user = new Usuario();
         try {
             session.getTransaction().begin();
-            user = (Usuario) session.getNamedQuery("Usuario.userLogin").setParameter("mail", mail)
-                    .setParameter("senha", senha).uniqueResult();
+            user = (Usuario) session.getNamedQuery("Usuario.userLogin").setParameter("mail", mail).uniqueResult();
         } catch (Exception e) {
             e.printStackTrace();
             if (session.getTransaction() != null) session.getTransaction().rollback();
