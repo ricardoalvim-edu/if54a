@@ -42,6 +42,10 @@ body{
   margin-top: 5%;
 }
 
+.boxConteudoUsuarios {
+  margin-left: 5%;
+}
+
 .searchCourses{
   background-image: url("../img/buildings_1616_1726_1280x320.jpg");
   background-repeat: no-repeat;

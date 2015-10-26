@@ -64,9 +64,15 @@ public class ModelUsuario {
         return user;
     }
     
-    
-    
     public static int tamanhoUsuario() {
+        return todosUsuarios().size();
+    }
+    
+    public static boolean primeiroUsuario() {
+        return tamanhoUsuario() == 0;
+    }
+    
+    public static List<Usuario> todosUsuarios() {
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();
         List<Usuario> usuario = null;
@@ -74,14 +80,9 @@ public class ModelUsuario {
             s.getTransaction().begin();
             Query query = s.getNamedQuery("Usuario.todos");
             usuario = query.list();
-            s.getTransaction().commit();
         } catch (Exception ex){
             System.out.println("Exception: "+ ex.getMessage());
         }
-        return usuario.size();
-    }
-    
-    public static boolean primeiroUsuario() {
-        return tamanhoUsuario() == 0;
+        return usuario;
     }
 }

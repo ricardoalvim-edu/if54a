@@ -1,7 +1,9 @@
 package org.coursera.Model;
 
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.coursera.Entity.Curso;
+import org.coursera.Entity.Usuario;
 
 public class HTML {
     public static String head(String titulo) {
@@ -33,7 +35,7 @@ public class HTML {
             if (tipo_usr.equals("normal")) {
                 logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"Logout\" class=\"menuItem cadastrar\">Sair</a> <a href='index' class='menuItem'>Página Inicial</a> ";
             } else if (tipo_usr.equals("administrativo")){
-                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"Logout\" class=\"menuItem cadastrar\">Sair</a> <a href=\"CadastroCursos\" class=\"menuItem\">Cadastrar Cursos</a> <a href='index' class='menuItem'>Página Inicial</a> ";
+                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"Logout\" class=\"menuItem cadastrar\">Sair</a> <a href=\"CadastroCursos\" class=\"menuItem\">Cadastrar Cursos</a> <a href=\"Usuarios\" class=\"menuItem\">Lista de usuarios</a> <a href='index' class='menuItem'>Página Inicial</a> ";
             }       
         }
         String header = "<header>\n" +
@@ -95,7 +97,7 @@ public class HTML {
                       "<h2 class='courseUni'>" + c.getUni() + "</h2>\n" +
                       "<p class='descCourse'>" + c.getDescricao() + "</h2>\n" +
                       "<iframe style='margin-top: -10%; margin-left: 51%;' width=\"420\" height=\"315\"\n" +
-                "src=\'"+ c.getYoutubeLink()+"'>\n" +
+                "src=\'https://www.youtube.com/embed/" + c.getYoutubeLink()+"'>\n" +
         "</iframe>";
         return body;
     }
@@ -105,6 +107,25 @@ public class HTML {
         String erro = "<p><center>" + mensagem + "</p></center>"; 
         builder.append(head("Erro - Coursera")).append(bodyInicio(request)).append(erro).append(bodyFinal());
         return builder;
+    }
+    
+    public static StringBuilder bodyListaAlunos() {
+        StringBuilder builder = new StringBuilder();
+        StringBuilder builderReturn = new StringBuilder();
+        String body = "";
+        String body1 = "<body>\n" +
+                    "<p></p>\n" +
+                    "<div class='boxConteudoUsuarios'>\n";
+        for (Usuario u : ModelUsuario.todosUsuarios()) {
+           body =   "<div class='boxConteudo'>\n" +
+                    "<p>Usuario: " + u.getUsuario() + "</p>\n" +
+                    "<p>E-mail: " + u.getEmail() + "</p>\n" +
+                    "<p>Tipo de acesso: " + u.getTipo_usr() + "</p>\n" +
+                    "</div>";
+           builder.append(body);
+        }
+        builderReturn.append(body1).append(builder).append("</div>\n</body>\n</html>");
+        return builderReturn;       
     }
     
     public static String bodyCadastroCurso() {
@@ -118,13 +139,14 @@ public class HTML {
                "<br>\n" +
                "<input type='text' placeholder='Descrição' name='desc'/>\n" +
                "<br>\n" +
-               "<input type='text' placeholder='Imagem' name='urlImage'/>\n" +
+               "<input type='text' placeholder='Imagem (use um link direto! exemplo: http://i.imgur.com/rAooG7D.jpg)' name='urlImage'/>\n" +
                "<br>\n" +
                "<input type='text' placeholder='Universidade' name='uni'/>\n" +
                "<br>\n" +
-               "<input type='text' placeholder='YouTube' name='youtube'/>\n" +
+               "<input type='text' placeholder='YouTube (insira apenas o ID. exemplo: cH8Vl62qEjE)' name='youtube'/>\n" +
                "<br>\n" +
                "<button type='submit'>Salvar</button>\n" +
+               "<p><center>Exemplos: http://i.imgur.com/rAooG7D.jpg - cH8Vl62qEjE</center></p>" + 
                "</form>\n" +
                "</div>\n" +
                "</body>\n" +
