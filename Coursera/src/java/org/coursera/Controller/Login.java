@@ -1,7 +1,6 @@
 package org.coursera.Controller;
 
 import org.coursera.Model.HTML;
-import org.coursera.Controller.CadastroUsuario;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.security.NoSuchAlgorithmException;

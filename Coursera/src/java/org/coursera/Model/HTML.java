@@ -1,8 +1,6 @@
 package org.coursera.Model;
 
 import javax.servlet.http.HttpServletRequest;
-import org.coursera.Model.ModelCursos;
-import org.coursera.Model.ModelUsuario;
 import org.coursera.Entity.Curso;
 
 public class HTML {
@@ -33,9 +31,9 @@ public class HTML {
             String tipo_usr = (String) request.getSession().getAttribute("tipo_usr");
             String usuario = (String) request.getSession().getAttribute("usr");
             if (tipo_usr.equals("normal")) {
-                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"logout\" class=\"menuItem cadastrar\">Sair</a> <a href='index' class='menuItem'>Página Inicial</a> ";
+                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"Logout\" class=\"menuItem cadastrar\">Sair</a> <a href='index' class='menuItem'>Página Inicial</a> ";
             } else if (tipo_usr.equals("administrativo")){
-                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"logout\" class=\"menuItem cadastrar\">Sair</a> <a href=\"CadastroCursos\" class=\"menuItem\">Cadastrar Cursos</a> <a href='index' class='menuItem'>Página Inicial</a> ";
+                logadoHeader = "<p class='menuItem user'>Olá " + usuario + ".</p> <a href=\"Logout\" class=\"menuItem cadastrar\">Sair</a> <a href=\"CadastroCursos\" class=\"menuItem\">Cadastrar Cursos</a> <a href='index' class='menuItem'>Página Inicial</a> ";
             }       
         }
         String header = "<header>\n" +
