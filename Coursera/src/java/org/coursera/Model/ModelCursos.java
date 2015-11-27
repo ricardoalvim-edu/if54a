@@ -78,7 +78,7 @@ public class ModelCursos {
         try{
             s.getTransaction().begin();
             Query query = s.getNamedQuery("Curso.cursoByNome");
-            query.setParameter("nome", "%"+nome+"%");
+            query.setParameter("nome", nome);
             cursos = query.list();
             s.getTransaction().commit();
         }catch (Exception ex){

@@ -8,14 +8,14 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <h1><%=request.getParameter("q") %></h1>
+        <h1 style="text-align: center">Pesquisa por ${param.q}</h1>
         <c:forEach var="cursos" items="${curso.cursoPorNome(param.q)}">
             <div class='boxConteudo'>
                 <div class='imgBox' style="background-image: url('${cursos.urlImagem}')"> </div>
                 <a href="VerCurso?id=${cursos.idCursos}" class="titleCourse">${cursos.nome}</a>
                 <p class='universityText'>${cursos.uni}</p>
-            </div>
-        </c:forEach>
+            </div> 
+        </c:forEach> 
 
     </body>
 </html>

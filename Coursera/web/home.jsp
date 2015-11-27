@@ -16,7 +16,6 @@
         <jsp:include page="head.jsp"/>
         <script>
             function showHint(str) {
-                
                 if (str.length == 0) {                    
                     document.getElementById("searchArea").innerHTML = "";
                     return;
@@ -55,10 +54,7 @@
                 </div>
             </div>
         </div>
-        <div id="searchArea" style="width: 90%; text-align: center; height: 300px; margin-top: 2%;">
-            <span id="pesquisaArea"></span>
-        </div>
-        <div class='areaEspecializacao'>
+        <div class='areaEspecializacao' id="searchArea">
             <h1>Novas especializações</h1>
             <div class='box'>
                 <jsp:include page="cursos.jsp"/>
