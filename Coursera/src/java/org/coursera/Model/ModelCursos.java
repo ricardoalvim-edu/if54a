@@ -8,6 +8,7 @@ Classe que manipula inserção e obtenção de dados em relação aos cursos.
 
 package org.coursera.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 import org.coursera.Entity.Curso;
 import org.coursera.Util.HibernateUtil;
@@ -68,6 +69,25 @@ public class ModelCursos {
             s.close();
         }
         return curso;
+    }
+    
+    public static List<Curso> cursoPorNome(String nome){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        List<Curso> cursos = new ArrayList<>();
+        try{
+            s.getTransaction().begin();
+            Query query = s.getNamedQuery("Curso.cursoByNome");
+            query.setParameter("nome", "%"+nome+"%");
+            cursos = query.list();
+            s.getTransaction().commit();
+        }catch (Exception ex){
+            System.out.println("Exception: "+ ex.getMessage());
+        }
+        finally{
+            s.close();
+        }
+        return cursos;
     }
     
     public static int tamanhoCurso(){

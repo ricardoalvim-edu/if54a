@@ -29,7 +29,7 @@ public class Logout extends HttpServlet {
         int log = (Integer) request.getSession().getAttribute("logado");
         if (log == 1){
             session.invalidate();  
-            response.sendRedirect("index");
+            response.sendRedirect("home.jsp");
         } else {
             pw.println(HTML.aviso("Algo de errado aconteceu! Contate um administrador.", request));
         }

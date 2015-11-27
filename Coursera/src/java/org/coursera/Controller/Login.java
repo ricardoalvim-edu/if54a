@@ -39,7 +39,7 @@ public class Login extends HttpServlet {
                 session.setAttribute("tipo_usr", user.getTipo_usr());
                 session.setAttribute("usr", user.getUsuario());
                 session.setAttribute("logado", 1);
-                response.sendRedirect("index");
+                response.sendRedirect("home.jsp");
             } else {
                 pw.println(HTML.aviso("E-mail ou senha invalidos.", request));
             }
