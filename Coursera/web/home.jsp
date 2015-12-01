@@ -41,7 +41,7 @@
             <input type="text" placeholder="O que você gostaria de aprender?" class="searcherCourses" onKeyUp="showHint(this.value)"/>
             <br>
             <div class="textViewMore">
-                <span>ou <a href="#" class="viewMoreLink">ver lista de cursos.</a></span>
+                <span>ou <a href="cursos.jsp" class="viewMoreLink">ver lista de cursos.</a></span>
                 <div class="controlInfo">
                     <ul>
                         <li class="textInfo">
@@ -55,10 +55,6 @@
             </div>
         </div>
         <div class='areaEspecializacao' id="searchArea">
-            <h1>Novas especializações</h1>
-            <div class='box'>
-                <jsp:include page="cursos.jsp"/>
-            </div>
         </div>
     </body>
 </html>

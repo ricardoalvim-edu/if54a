@@ -17,7 +17,7 @@ import javax.persistence.NamedQuery;
 @NamedQueries({
     @NamedQuery(name="Curso.todos", query = "SELECT c FROM Curso c"),
     @NamedQuery(name="Curso.cursoById", query = "SELECT c FROM Curso c WHERE c.idCursos = :idCurso"),
-    @NamedQuery(name="Curso.cursoByNome", query = "SELECT c FROM Curso c WHERE c.nome = :nome")
+    @NamedQuery(name="Curso.cursoByNome", query = "SELECT c FROM Curso c WHERE c.nome LIKE :nome")
 })
 @Entity(name = "Curso")
 public class Curso {
