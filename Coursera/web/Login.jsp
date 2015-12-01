@@ -1,17 +1,10 @@
-<%-- 
-    Document   : Login
-    Created on : 24/11/2015, 20:02:46
-    Author     : ricar
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login - Coursera</title>
-        <jsp:include page="head.jsp"/>
-        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>  
+        <jsp:include page="head.jsp"/>  
     </head>
     <header>
         <jsp:include page="header.jsp"/>

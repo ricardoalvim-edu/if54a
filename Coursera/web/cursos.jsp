@@ -1,16 +1,18 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="curso" class="org.coursera.Model.ModelCursos"/>
-<!DOCTYPE html>
-<html>
-    <body>
-    <c:forEach var="cursos" items="${curso.cursos()}">
-        <div class='boxConteudo'>
-            <div class='imgBox' style="background-image: url('${cursos.urlImagem}')"> </div>
-            <a href="VerCurso?id=${cursos.idCursos}" class="titleCourse">${cursos.nome}</a>
-            <p class='universityText'>${cursos.uni}</p>
+<html ng-app="app">
+    <body ng-controller='MainController'>
+        <script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+        <div ng-repeat='curso in cursos.listaCursos'>
+            <div class='boxConteudo'>
+                <div class='imgBox' style="background-image: url({{ curso.img }})"> </div>
+                <a href="VerCurso?id={{ curso.id }}" class="titleCourse">{{ curso.nome }}</a>
+                <p class='universityText'>{{ curso.uni }}</p>
+            </div>
         </div>
-    </c:forEach>
+        <script src="js/app.js"></script>
+        <script src="js/MainController.js"></script>
+        <script src="js/cursos.js"></script>
 </body>
 </html>

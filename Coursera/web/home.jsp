@@ -1,36 +1,13 @@
-<%-- 
-    Document   : home
-    Created on : 24/11/2015, 19:33:45
-    Author     : ricar
---%>
-
 <%@page import="org.coursera.Model.ModelCursos"%>
 <%@page import="org.coursera.Model.ModelUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index - Coursera</title>
         <jsp:include page="head.jsp"/>
-        <script>
-            function showHint(str) {
-                if (str.length == 0) {                    
-                    document.getElementById("searchArea").innerHTML = "";
-                    return;
-                } else {
-                    var xmlhttp = new XMLHttpRequest();
-                    xmlhttp.onreadystatechange = function () {
-                        if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-                            document.getElementById("searchArea").innerHTML = xmlhttp.responseText;
-                        }
-                    };
-                    xmlhttp.open("GET", "pesquisar.jsp?q=" + str, true);
-                    xmlhttp.send();
-                }
-            }
-        </script>
+        <script src ="js/busca.js"></script>
     </head>
     <header>
         <jsp:include page="header.jsp"/>

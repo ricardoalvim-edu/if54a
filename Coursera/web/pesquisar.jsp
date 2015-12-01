@@ -16,6 +16,5 @@
                 <p class='universityText'>${cursos.uni}</p>
             </div> 
         </c:forEach> 
-
     </body>
 </html>
