@@ -16,7 +16,7 @@ public class DadosHome extends HttpServlet {
         JSONObject obj = new JSONObject();
         obj.put("numero_cursos", ModelCursos.cursos().size());
         obj.put("numero_usuarios", ModelUsuario.todosUsuarios().size());
-        out.println(obj.toString());
+        out.println(obj.toString()); 
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

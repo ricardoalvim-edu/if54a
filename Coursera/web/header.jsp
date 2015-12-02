@@ -1,6 +1,7 @@
 <%@page contentType="text/html"  pageEncoding="UTF-8" %>
 
-<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+<link rel="stylesheet" href="style/ngprogress.css">
 <h1 class="logo">
 </h1>
 <input type="checkbox"  id="control-nav"  style="display: none;"/>

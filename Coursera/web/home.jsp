@@ -34,5 +34,6 @@
     <script src="js/app.js"></script>
     <script src="js/MainController.js"></script>
     <script src="js/dadoshome.js"></script>
+    <script src="js/ngprogress.min.js"></script>
     </body>
 </html>
