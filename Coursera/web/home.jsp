@@ -1,18 +1,16 @@
-<%@page import="org.coursera.Model.ModelCursos"%>
-<%@page import="org.coursera.Model.ModelUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Index - Coursera</title>
         <jsp:include page="head.jsp"/>
-        <script src ="js/busca.js"></script>
+        <script src="js/busca.js"></script>
     </head>
     <header>
         <jsp:include page="header.jsp"/>
     </header>
-    <body>
+    <body ng-controller='HomeController'>
         <div class="searchCourses">
             <p class="textSearch">Faça os melhores cursos online!</p>
             <input type="text" placeholder="O que você gostaria de aprender?" class="searcherCourses" onKeyUp="showHint(this.value)"/>
@@ -22,10 +20,10 @@
                 <div class="controlInfo">
                     <ul>
                         <li class="textInfo">
-                            <b> <%= ModelUsuario.tamanhoUsuario()%> </b> Alunos
+                            <b> {{ dadoshome.numero_usuarios }} </b> Alunos
                         </li>
                         <li class="textInfo">
-                            <b><%= ModelCursos.tamanhoCurso()%></b> Cursos 
+                            <b> {{ dadoshome.numero_cursos }} </b> Cursos 
                         </li>
                     </ul>
                 </div>
@@ -33,5 +31,8 @@
         </div>
         <div class='areaEspecializacao' id="searchArea">
         </div>
+    <script src="js/app.js"></script>
+    <script src="js/MainController.js"></script>
+    <script src="js/dadoshome.js"></script>
     </body>
 </html>

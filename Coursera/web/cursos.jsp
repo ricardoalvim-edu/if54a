@@ -9,7 +9,7 @@
     <header>
         <jsp:include page="header.jsp"/>
     </header>
-    <body style="margin: 0px auto; text-align: center" ng-controller='MainController'>
+    <body style="margin: 0px auto; text-align: center" ng-controller='CursosController'>
         <h1>Todos os cursos</h1>
             <div ng-repeat='curso in cursos.listaCursos'>
                 <div class='boxConteudo'>
