@@ -1,7 +1,8 @@
 <%@page contentType="text/html"  pageEncoding="UTF-8" %>
 
-<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
-<link rel="stylesheet" href="style/ngprogress.css">
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.js"></script>
+<link rel='stylesheet' href='style/loading-bar.css' type='text/css' media='all' />
+<script type='text/javascript' src='js/loading-bar.js'></script>
 <h1 class="logo">
 </h1>
 <input type="checkbox"  id="control-nav"  style="display: none;"/>

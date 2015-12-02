@@ -9,3 +9,8 @@ app.controller('HomeController', ['$scope', 'dadoshome', function($scope, dadosh
         $scope.dadoshome = data;
     });
 }]);
+
+app.controller('ProgressController', ['$scope', function($scope, ngProgressFactory) {
+    $scope.progressbar = ngProgressFactory.createInstance();
+    $scope.progressbar.start();
+}]);

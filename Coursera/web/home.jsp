@@ -10,14 +10,14 @@
     <header>
         <jsp:include page="header.jsp"/>
     </header>
-    <body ng-controller='HomeController'>
+    <body>
         <div class="searchCourses">
             <p class="textSearch">Faça os melhores cursos online!</p>
             <input type="text" placeholder="O que você gostaria de aprender?" class="searcherCourses" onKeyUp="showHint(this.value)"/>
             <br>
             <div class="textViewMore">
                 <span>ou <a href="cursos.jsp" class="viewMoreLink">ver lista de cursos.</a></span>
-                <div class="controlInfo">
+                <div class="controlInfo" ng-controller='HomeController'>
                     <ul>
                         <li class="textInfo">
                             <b> {{ dadoshome.numero_usuarios }} </b> Alunos

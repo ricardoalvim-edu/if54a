@@ -11,11 +11,13 @@
     </header>
     <body style="margin: 0px auto; text-align: center" ng-controller='CursosController'>
         <h1>Todos os cursos</h1>
-            <div ng-repeat='curso in cursos.listaCursos'>
-                <div class='boxConteudo'>
-                    <div class='imgBox' style="background-image: url({{ curso.img }})"> </div>
-                    <a href="VerCurso?id={{ curso.id }}" class="titleCourse">{{ curso.nome }}</a>
-                    <p class='universityText'>{{ curso.uni }}</p>
+            <div class="box">
+                <div ng-repeat='curso in cursos.listaCursos'>
+                    <div class='boxConteudo'>
+                        <div class='imgBox' style="background-image: url({{ curso.img }})"> </div>
+                        <a href="VerCurso.jsp?id={{ curso.id }}" class="titleCourse">{{ curso.nome }}</a>
+                        <p class='universityText'>{{ curso.uni }}</p>
+                    </div>
                 </div>
             </div>
         <script src="js/app.js"></script>

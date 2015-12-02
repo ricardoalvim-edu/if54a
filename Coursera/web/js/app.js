@@ -1,1 +1,1 @@
-var app = angular.module('app', ['ngProgress']);
+var app = angular.module('app', ['angular-loading-bar']);
