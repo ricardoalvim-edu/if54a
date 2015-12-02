@@ -1,7 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<html ng-app="app">
+<html ng-app="app" lang="pt-br">
     <head>
         <title>Todos os cursos - Coursera</title>
         <jsp:include page="head.jsp"/>
@@ -21,6 +21,7 @@
                 </div>
             </div>
         <script src="js/app.js"></script>
+        <script src="js/ngprogress.min.js"></script>
         <script src="js/MainController.js"></script>
         <script src="js/cursos.js"></script>
     </body>

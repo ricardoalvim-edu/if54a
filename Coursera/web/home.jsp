@@ -20,10 +20,10 @@
                 <div class="controlInfo" ng-controller='HomeController'>
                     <ul>
                         <li class="textInfo">
-                            <b> {{ dadoshome.numero_usuarios }} </b> Alunos
+                            <b> {{ dadoshome.numero_usuarios}} </b> Alunos
                         </li>
                         <li class="textInfo">
-                            <b> {{ dadoshome.numero_cursos }} </b> Cursos 
+                            <b> {{ dadoshome.numero_cursos}} </b> Cursos 
                         </li>
                     </ul>
                 </div>
@@ -31,9 +31,9 @@
         </div>
         <div class='areaEspecializacao' id="searchArea">
         </div>
-    <script src="js/app.js"></script>
-    <script src="js/MainController.js"></script>
-    <script src="js/dadoshome.js"></script>
-    <script src="js/ngprogress.min.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/MainController.js"></script>
+        <script src="js/dadoshome.js"></script>
+        <script src="js/ngprogress.min.js"></script>
     </body>
 </html>
