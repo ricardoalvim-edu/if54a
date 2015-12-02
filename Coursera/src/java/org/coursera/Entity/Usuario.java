@@ -28,6 +28,11 @@ public class Usuario {
     private String senha;
     private String email;
     private String tipo_usr;
+    private String cep;
+    private String logradouro;
+    private String bairro;
+    private String cidade;
+    private String siglaEstado;
 
     public Long getId() {
         return id;
@@ -45,11 +50,16 @@ public class Usuario {
         this.tipo_usr = tipo_usr;
     }
     
-    public Usuario(String usuario, String senha, String email, String tipo_usr) {
+    public Usuario(String usuario, String senha, String email, String tipo_usr, String log, String bairro, String cep, String cidade, String sigla) {
         this.usuario = usuario;
         this.senha = senha;
         this.email = email;
         this.tipo_usr = tipo_usr;
+        this.logradouro = log;
+        this.bairro = bairro;
+        this.cep = cep;
+        this.cidade = cidade;
+        this.siglaEstado = sigla;
     }
     
     public Usuario() {
@@ -81,5 +91,45 @@ public class Usuario {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getCep() {
+        return cep;
+    }
+
+    public void setCep(String cep) {
+        this.cep = cep;
+    }
+
+    public String getLogradouro() {
+        return logradouro;
+    }
+
+    public void setLogradouro(String logradouro) {
+        this.logradouro = logradouro;
+    }
+
+    public String getBairro() {
+        return bairro;
+    }
+
+    public void setBairro(String bairro) {
+        this.bairro = bairro;
+    }
+
+    public String getCidade() {
+        return cidade;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public String getSiglaEstado() {
+        return siglaEstado;
+    }
+
+    public void setSiglaEstado(String siglaEstado) {
+        this.siglaEstado = siglaEstado;
     }
 }

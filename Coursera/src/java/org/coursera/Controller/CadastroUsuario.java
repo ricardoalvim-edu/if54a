@@ -32,6 +32,12 @@ public class CadastroUsuario extends HttpServlet {
         String usr = request.getParameter("usr");
         String mail = request.getParameter("mail");
         String senha = request.getParameter("senha");
+        String log = request.getParameter("logradouro");
+        String cep = request.getParameter("cep");
+        String bairro = request.getParameter("bairro");
+        String cidade = request.getParameter("cidade");
+        String sigla = request.getParameter("estado");
+        
         PrintWriter pw = response.getWriter();
         if (ModelUsuario.usuarioExiste(usr)) {
             pw.println(HTML.aviso("Já registraram este usuario. Escolha outro!", request));
@@ -45,7 +51,7 @@ public class CadastroUsuario extends HttpServlet {
             } else {
                 tipo_usr = "normal";
             }    
-            Usuario usuario = new Usuario(usr, hashed, mail, tipo_usr);
+            Usuario usuario = new Usuario(usr, hashed, mail, tipo_usr, log, bairro, cep, cidade, sigla);
             ModelUsuario ru = new ModelUsuario();
             boolean resultado = ru.registrar(usuario);
             if (resultado) {

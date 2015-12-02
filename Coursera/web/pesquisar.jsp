@@ -12,7 +12,7 @@
         <c:forEach var="cursos" items="${curso.cursoPorNome(param.q)}">
             <div class='boxConteudo'>
                 <div class='imgBox' style="background-image: url('${cursos.urlImagem}')"> </div>
-                <a href="VerCurso?id=${cursos.idCursos}" class="titleCourse">${cursos.nome}</a>
+                <a href="VerCurso.jsp?id=${cursos.idCursos}" class="titleCourse">${cursos.nome}</a>
                 <p class='universityText'>${cursos.uni}</p>
             </div> 
         </c:forEach> 
