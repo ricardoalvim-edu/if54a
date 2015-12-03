@@ -11,7 +11,7 @@
         <h1 style="text-align: center">Pesquisa por ${param.q}</h1>
         <c:forEach var="cursos" items="${curso.cursoPorNome(param.q)}">
             <div class='boxConteudo'>
-                <div class='imgBox' style="background-image: url('${cursos.urlImagem}')"> </div>
+                <div class='imgBox' style=" background-size: 220px 125px; background-image: url('${pageContext.request.contextPath}/img/{{ curso.img }}')"> </div>
                 <a href="VerCurso.jsp?id=${cursos.idCursos}" class="titleCourse">${cursos.nome}</a>
                 <p class='universityText'>${cursos.uni}</p>
             </div> 
