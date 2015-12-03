@@ -1,13 +1,7 @@
-<%-- 
-    Document   : CadastroUsuario
-    Created on : 24/11/2015, 20:09:21
-    Author     : ricar
---%>
-
 <%@page import="org.coursera.Model.ModelUsuario"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html>
+<html ng-app="app">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cadastrar-se - Coursera</title>
