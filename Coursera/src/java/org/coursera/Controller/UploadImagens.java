@@ -36,7 +36,7 @@ public class UploadImagens extends HttpServlet {
         if (session.getAttribute("obj_up") != null) {
             Object obj = session.getAttribute("obj_up");
             if (contentType.equals("image/png") || contentType.equals("image/jpeg")) {
-                File uploads = new File("C:\\Users\\athos36848\\Git\\programacao-web\\Coursera\\web\\img");
+                File uploads = new File("C:\\Users\\ricar\\Documents\\GitHub\\programacao-web\\Coursera\\web\\img");
                 String arquivo = Integer.toString(ThreadLocalRandom.current().nextInt(1, 100000 + 1)) + "-" + fileName;
                 File file = new File(uploads, arquivo);
                 try (InputStream input = filePart.getInputStream()) {
