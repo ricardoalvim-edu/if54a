@@ -60,6 +60,8 @@ public class CadastroUsuario extends HttpServlet {
                 session.setAttribute("tipo_usr", tipo_usr);
                 session.setAttribute("usr", usr);
                 session.setAttribute("logado", 1);
+                //session.setAttribute("obj_up", usuario);
+                //session.setAttribute("obj_tipo", Usuario.class.getSimpleName());
                 response.sendRedirect("index");
             } else {
                 pw.println(HTML.aviso("Algo de errado aconteceu com seu cadastro! Contate um administrador.", request));

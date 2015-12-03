@@ -14,7 +14,7 @@
             <div class="box">
                 <div ng-repeat='curso in cursos.listaCursos'>
                     <div class='boxConteudo'>
-                        <div class='imgBox' style="background-image: url({{ curso.img }})"> </div>
+                        <div class='imgBox' style="background-image: url('${pageContext.request.contextPath}/img/{{ curso.img }}')"> </div>
                         <a href="VerCurso.jsp?id={{ curso.id }}" class="titleCourse">{{ curso.nome }}</a>
                         <p class='universityText'>{{ curso.uni }}</p>
                     </div>

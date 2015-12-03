@@ -11,6 +11,7 @@ function showHint(str) {
         };
         xmlhttp.open("GET", "pesquisar.jsp?q=" + str, true);
         xmlhttp.send();
+        setInterval(5000)
     }
 }
 

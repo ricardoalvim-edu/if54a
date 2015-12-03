@@ -34,6 +34,22 @@ public class ModelCursos {
         }
     }
     
+    public static boolean atualizar(Curso curso){
+        SessionFactory sf = HibernateUtil.getSessionFactory();
+        Session s = sf.openSession();
+        try{
+            s.getTransaction().begin();
+            s.saveOrUpdate(curso);
+            s.getTransaction().commit();
+            s.close();
+            return true;
+        }catch (Exception ex){
+            System.out.println("Exception: "+ ex.getMessage());
+            s.close();
+            return false;
+        }
+    }
+    
     public static List<Curso> cursos(){
         SessionFactory sf = HibernateUtil.getSessionFactory();
         Session s = sf.openSession();

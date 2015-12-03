@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.coursera.Entity.Curso;
 import org.coursera.Model.HTML;
 import org.coursera.Model.ModelCursos;
@@ -33,8 +34,12 @@ public class CadastroCursos extends HttpServlet{
         String youtube = request.getParameter("youtube");
         Curso curso = new Curso (nome, description, url, universidade, youtube);
         boolean resultado = ModelCursos.salvar(curso);
+        
         if (resultado) {
-            pw.println(HTML.aviso("Cadastro feito com sucesso! <a href='index'>Volte para a página principal.</a>", request));
+            HttpSession session = request.getSession();
+            session.setAttribute("obj_up", curso);
+            session.setAttribute("obj_tipo", Curso.class.getSimpleName());
+            response.sendRedirect("Upload.jsp");
         } else {
             pw.println(HTML.aviso("Algo de errado aconteceu com o cadastro do curso! Contate um administrador. <p></p> <a href='index'>Volte para a página principal.</a>", request));
         }
