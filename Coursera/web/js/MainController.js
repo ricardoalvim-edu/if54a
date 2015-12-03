@@ -1,7 +1,7 @@
 app.controller('CursosController', ['$scope', 'cursos', function($scope, cursos) {
   cursos.success(function(data) {
-      $scope.cursos = data;
-  });
+    $scope.cursos = data;
+  }); 
 }]);
 
 app.controller('HomeController', ['$scope', 'dadoshome', function($scope, dadoshome) {
