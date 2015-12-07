@@ -1,4 +1,1 @@
-# programacao-web
-Repositório para armazenar o projeto da matéria Programação Web da Universidade Tecnológica Federal do Paraná, do campus de Cornélio Procópio.
-
-Grupo: Athos Castro Moreno e Ricardo Carreiro Alvim
+Repositório para armazenar o projeto da matéria Programação Web da Universidade Tecnológica Federal do Paraná, do campus de Cornélio Procópio. O projeto consiste em fazer uma "copia" do site coursera.org, utilizando Java (Servlets/JSP), HTML, CSS e JavaScript (Angular.js).
